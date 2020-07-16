@@ -1,0 +1,8 @@
+thành phần outlet của route
+
+const routes: Routes = [
+    {
+        outlet:
+    }
+]
+
