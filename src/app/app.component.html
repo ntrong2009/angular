@@ -1,2 +1,19 @@
-<router-outlet></router-outlet>  
-<router-outlet  name="sidebar"></router-outlet> 
+<!-- <a [routerLink]="[{ outlets: { primary: ['products'],sidebar: ['products'] } }]">
+  Products
+</a>
+
+<div style="float: left;">
+  <router-outlet></router-outlet>
+</div>
+<div style="float: right;">
+  <router-outlet name="sidebar"></router-outlet>
+</div> -->
+
+<a routerLink='A'>A</a>
+<a routerLink='B'>B</a>
+<br>
+<a [routerLink]='[{ outlets: { secondRouter: ["C"] } }]'>C</a>
+<a [routerLink]='[{ outlets: { secondRouter: ["D"] } }]'>D</a>
+
+<router-outlet></router-outlet>
+<router-outlet name='secondRouter'></router-outlet>
