@@ -1,9 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { OneComponent } from './components/one/one/one.component';
-import { TwoComponent } from './components/two/two/two.component';
+import { OneComponent } from './components/one/one.component';
+import { TwoComponent } from './components/two/two.component';
+import { UsersService } from './services/users.service';
+
 
 @NgModule({
   declarations: [
@@ -12,9 +15,10 @@ import { TwoComponent } from './components/two/two/two.component';
     TwoComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

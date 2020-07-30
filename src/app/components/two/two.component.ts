@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-two',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TwoComponent implements OnInit {
 
-  constructor() { }
+  user: string;
+
+  constructor( private userService: UsersService ) { }
 
   ngOnInit(): void {
+    this.userService.cast.subscribe(user => this.user = user);
   }
 
 }
