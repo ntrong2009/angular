@@ -1,6 +1,6 @@
 import { createAction } from '@ngrx/store';
 
-export const increment = createAction('[Counter Component] Increment');
-export const decrement = createAction('[Counter Component] Decrement');
+export const increment = createAction('cong');
+export const decrement = createAction('tru');
 
-export const reset = createAction('[Counter Component] Reset');
+export const reset = createAction('dat lai');
