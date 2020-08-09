@@ -1,0 +1,13 @@
+<ul>
+    <li *ngFor="
+    let item of arrays; 
+    let i = index; 
+    let fst = first; 
+    let lst = last;
+    let ev = even;
+    let od = odd;">
+    {{ item }} : {{ i }} : {{ fst }} : {{ lst }} : {{ ev }} : {{ od }}</li>
+</ul>
+
+<button (click)="addMoreItem()">add</button>
+<button (click)="deleteItem()">delete</button>
