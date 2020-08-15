@@ -1,0 +1,21 @@
+.show-less {
+    height: 26px;
+    overflow: hidden;
+}
+
+.d-inline{
+    display: inline;
+}
+
+.d-none{
+    display: none;
+}
+
+
+.long-text {
+	display: none
+}
+
+.show-more-button{
+  display: block;
+}
