@@ -1,32 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { increment, decrement, reset } from './counter.actions';
+
+import { ProductModel } from 'src/app/product.model';
+import { CounterService } from './product.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'angular';
+export class AppComponent implements OnInit{
+  
+  product: ProductModel[];
 
-  count$: Observable<number>;
+  product$: Observable<any> = this.store.select(state => state)
 
-  constructor(private store: Store<{ count: number }>){
-    console.log(this.store);
-    this.count$ = store.pipe(select('count'));
+  constructor(
+    private store: Store<{ product: ProductModel[] }>,
+  ){
+    console.log(this.store.dispatch({ type : 'load_product' }));
   }
 
-  increment(){
-    this.store.dispatch(increment());
-  }
-
-  decrement(){
-    this.store.dispatch(decrement());
-  }
-
-  reset(){
-    this.store.dispatch(reset());
+  ngOnInit(){
   }
 }

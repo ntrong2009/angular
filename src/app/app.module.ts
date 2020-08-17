@@ -4,7 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { StoreModule } from '@ngrx/store';
-import { counterReducer } from './counter.reducer';
+import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { CounterEffect } from 'src/app/product.effect';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,8 @@ import { counterReducer } from './counter.reducer';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({count : counterReducer})
+    HttpClientModule,
+    EffectsModule.forRoot([CounterEffect]),
   ],
   providers: [],
   bootstrap: [AppComponent]

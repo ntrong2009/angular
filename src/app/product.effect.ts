@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { mergeMap, map } from 'rxjs/operators';
-import { CounterService } from './counter.service';
+import { mergeMap, map, catchError } from 'rxjs/operators';
+import { CounterService } from './product.service';
 import { EMPTY } from 'rxjs';
 
 @Injectable()
@@ -12,11 +12,11 @@ export class CounterEffect{
         private counterService: CounterService,
     ){}
 
-    loadCounter$ = createEffect(() => this.action$.pipe(
-        ofType('cong'),
+    loadProduct$ = createEffect(() => this.action$.pipe(
+        ofType('load_product'),
         mergeMap(() => this.counterService.getData().pipe(
-            map(counter => ({type: 'cong', payload: counter}))
-            //catchError(()=> EMPTY)
+            map(product => ({type: 'load_product_success', payload: product})),
+            catchError(()=> EMPTY)
         ))
     ));
 }

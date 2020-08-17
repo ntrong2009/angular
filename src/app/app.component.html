@@ -5,3 +5,7 @@
 <button id="decrement" (click)="decrement()">Decrement</button>
 
 <button id="reset" (click)="reset()">Reset Counter</button>
+
+<ul>
+    <li *ngFor="let item of product">{{ item.name }}</li>
+</ul>

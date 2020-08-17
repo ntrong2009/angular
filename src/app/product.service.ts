@@ -11,6 +11,6 @@ export class CounterService {
   ) { }
 
   getData(){
-    return this.http.get('http://localhost:3000/posts');
+    return this.http.get('http://localhost:3000/products');
   }
 }
