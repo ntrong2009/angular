@@ -19,7 +19,11 @@ export class AppComponent implements OnInit{
   constructor(
     private store: Store<{ product: ProductModel[] }>,
   ){
-    console.log(this.store.dispatch({ type : 'load_product' }));
+    this.store.dispatch({ type : 'load_product' });
+    
+    this.product$.subscribe(data => {
+      console.log(data);
+    })
   }
 
   ngOnInit(){

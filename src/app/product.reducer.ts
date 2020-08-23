@@ -1,11 +1,17 @@
-import { createReducer, on } from '@ngrx/store';
+import { createReducer, on, Action } from '@ngrx/store';
+import { load_product } from 'src/app/product.actions';
+import { ProductModel } from 'src/app/product.model';
+import { from } from 'rxjs';
 
-export const initialState = 0;
+export interface State{
+    product: ProductModel;
+}
 
-// const _counterReducer = createReducer(
-    
-// )
+const productReducer = createReducer(
+    {},
+    on(load_product,(state) => { return ({ ...state, product: undefined }) }),
+)
 
-// export function counterReducer(state, action){
-//     return _counterReducer(state, action);
-// }
+export function reducer(state: State, action: Action){
+    return productReducer(state, action);
+}
