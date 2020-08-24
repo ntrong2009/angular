@@ -7,6 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { CounterEffect } from 'src/app/product.effect';
+import * as ProductReducer from 'src/app/product.reducer';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,9 @@ import { CounterEffect } from 'src/app/product.effect';
   imports: [
     BrowserModule,
     HttpClientModule,
+    StoreModule.forRoot({
+      productReducer: ProductReducer.reducer
+    }),
     EffectsModule.forRoot([CounterEffect]),
   ],
   providers: [],
