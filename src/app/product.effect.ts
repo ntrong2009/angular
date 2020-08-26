@@ -10,7 +10,9 @@ export class CounterEffect{
     constructor(
         private action$: Actions,
         private counterService: CounterService,
-    ){}
+    ){
+        console.log('effect run');
+    }
 
     loadProduct$ = createEffect(() => this.action$.pipe(
         ofType('load_product'),

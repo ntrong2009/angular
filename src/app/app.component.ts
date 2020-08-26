@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 
 import { ProductModel } from 'src/app/product.model';
-import { CounterService } from './product.service';
 
 @Component({
   selector: 'app-root',
@@ -14,11 +13,12 @@ export class AppComponent implements OnInit{
   
   product: ProductModel[];
 
-  product$: Observable<any> = this.store.select(state => state)
+  product$: Observable<any> = this.store.pipe(select(state => state.productReducer))
 
   constructor(
-    private store: Store<{ product: ProductModel[] }>,
+    private store: Store<{ productReducer: any }>,
   ){
+    // console.log('store', this.store);
     this.store.dispatch({ type : 'load_product' });
     
     this.product$.subscribe(data => {
