@@ -1,0 +1,3 @@
+Để bắt đầu sử dụng animation, chúng ta cần import thư viện từ package 
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

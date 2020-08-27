@@ -1,14 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppComponent } from './app.component';
+import { EnterAndLeaveComponent } from './components/enter-and-leave/enter-and-leave.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EnterAndLeaveComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
