@@ -7,18 +7,23 @@ import { MediaObserver, MediaChange } from '@angular/flex-layout';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  changeBg = false;
   title = 'angular';
 
   constructor(
     public mediaObserver: MediaObserver
   ){
-    mediaObserver.media$.subscribe((mediaChange: MediaChange)=> {
-      console.log('media$',mediaChange.mqAlias);
-    })
+    mediaObserver.media$.subscribe((mediaChange: MediaChange) => {
+      console.log('media$', mediaChange.mqAlias);
+    });
 
-    mediaObserver.asObservable().subscribe((media : MediaChange[]) => {
+    mediaObserver.asObservable().subscribe((media: MediaChange[]) => {
       console.log('asObservable', media);
     });
   }
 
+  changeBgColor(){
+    this.changeBg = !this.changeBg;
+  }
 }
