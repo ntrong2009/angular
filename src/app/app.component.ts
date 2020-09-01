@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'angular';
+  loader = false;
 
-  loaded = false;
+  constructor(private actRoute: ActivatedRoute){
+    this.actRoute.data.subscribe(data => {
+      console.log(data);
+    });
+  }
 
   ngOnInit() {
     setInterval(() => {
-      this.loaded = true;
+      this.loader = true;
     }, 3000);
   }
 }

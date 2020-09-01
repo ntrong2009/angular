@@ -9,6 +9,6 @@ export class AppService{
     constructor(private httpClient: HttpClient){}
 
     getData(){
-        return this.httpClient.get('http://localhost:3000/profile');
+        return this.httpClient.get('http://localhost:3000/discover');
     }
 }
