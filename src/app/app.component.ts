@@ -10,12 +10,6 @@ export class AppComponent implements OnInit {
   title = 'angular';
   loader = false;
 
-  constructor(private actRoute: ActivatedRoute){
-    this.actRoute.data.subscribe(data => {
-      console.log(data);
-    });
-  }
-
   ngOnInit() {
     setInterval(() => {
       this.loader = true;
