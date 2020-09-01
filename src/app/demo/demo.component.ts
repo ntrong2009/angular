@@ -14,7 +14,12 @@ export class DemoComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  loader = false;
+
+  ngOnInit() {
+    setInterval(() => {
+      this.loader = true;
+    }, 3000);
   }
 
 }
