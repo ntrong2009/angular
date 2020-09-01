@@ -2,27 +2,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
-import { SideNavToggleComponent } from './side-nav-toggle/side-nav-toggle.component';
+import { LayoutModule } from '@angular/cdk/layout';
+
+import { MainNavModule } from './main-nav/main-nav.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SideNavToggleComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatIconModule
+    LayoutModule,
+    MainNavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
