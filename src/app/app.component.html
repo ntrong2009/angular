@@ -1,1 +1,20 @@
-<img src="/assets/images/active-member.svg" alt="">
+<div class="card">
+    <div class="card-head">
+        <app-skeleton-loader *ngIf="!loader" Cwidth="100" Cheight="100" circle="true"></app-skeleton-loader>
+        <img *ngIf="loader" src="https://images.unsplash.com/photo-1506919258185-6078bba55d2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=515&q=80" alt="person">
+        <div class="info">
+            <app-skeleton-loader *ngIf="!loader" Cwidth="100"></app-skeleton-loader>
+            <div *ngIf="loader" class="name"></div>
+            <app-skeleton-loader *ngIf="!loader" Cwidth="150"></app-skeleton-loader>
+            <div class="desc"></div>
+        </div>
+    </div>
+    <div class="card-body">
+        <app-skeleton-loader *ngIf="!loader" Cwidth="100"></app-skeleton-loader>
+        <strong *ngIf="loader">About</strong>
+        <app-skeleton-loader *ngIf="!loader" Cwidth="270" Cheight="70"></app-skeleton-loader>
+        <div *ngIf="loader" class="about">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        </div>
+    </div>
+</div>
