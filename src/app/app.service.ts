@@ -11,4 +11,8 @@ export class AppService{
     getData(){
         return this.httpClient.get('http://localhost:3000/discover');
     }
+
+    getResult(){
+        return this.httpClient.get('http://localhost:3000/result');
+    }
 }

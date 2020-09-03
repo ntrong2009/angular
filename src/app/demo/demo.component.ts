@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-demo',
@@ -8,18 +9,24 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DemoComponent implements OnInit {
 
-  constructor(private actRoute: ActivatedRoute){
+  loader = false;
+
+  constructor(
+    private actRoute: ActivatedRoute,
+    private appService: AppService
+  ){
     this.actRoute.data.subscribe(data => {
       console.log(data);
     });
   }
 
-  loader = false;
-
   ngOnInit() {
-    setInterval(() => {
-      this.loader = true;
-    }, 3000);
+      this.appService.getResult().subscribe(data => {
+        setTimeout(() => {
+          console.log('data result', data);
+          this.loader = true;
+        }, 3000);
+      });
   }
 
 }
