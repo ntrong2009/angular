@@ -5,4 +5,5 @@ npm i -s @angular/flex-layout @angular/cdk
 https://github.com/angular/flex-layout
 
 npm install @ngx-translate/core --save
+npm install @ngx-translate/http-loader --save
 https://github.com/ngx-translate/core
