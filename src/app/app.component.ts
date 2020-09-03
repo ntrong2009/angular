@@ -9,18 +9,24 @@ import { MediaObserver, MediaChange } from '@angular/flex-layout';
 export class AppComponent {
 
   changeBg = false;
-  title = 'angular';
 
   constructor(
     public mediaObserver: MediaObserver
   ){
     mediaObserver.media$.subscribe((mediaChange: MediaChange) => {
-      console.log('media$', mediaChange.mqAlias);
+      // console.log('media$', mediaChange.mqAlias);
     });
 
     mediaObserver.asObservable().subscribe((media: MediaChange[]) => {
       console.log('asObservable', media);
+      if (media[media.length - 1].mqAlias === 'gt-xs'){
+        console.log('desktop');
+      } else {
+        console.log('mobile');
+      }
     });
+
+    console.log(mediaObserver.isActive('gt-xs'));
   }
 
   changeBgColor(){
