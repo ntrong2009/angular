@@ -1,0 +1,5 @@
+npm install --save @angular/material @angular/cdk
+https://v6.material.angular.io/guide/getting-started
+
+npm i -s @angular/flex-layout @angular/cdk
+https://github.com/angular/flex-layout
