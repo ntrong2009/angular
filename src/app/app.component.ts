@@ -14,19 +14,21 @@ export class AppComponent {
     public mediaObserver: MediaObserver
   ){
     mediaObserver.media$.subscribe((mediaChange: MediaChange) => {
-      // console.log('media$', mediaChange.mqAlias);
+      console.log('media$', mediaChange);
     });
 
     mediaObserver.asObservable().subscribe((media: MediaChange[]) => {
-      console.log('asObservable', media);
-      if (media[media.length - 1].mqAlias === 'gt-xs'){
-        console.log('desktop');
-      } else {
-        console.log('mobile');
-      }
+      // console.log('asObservable', media);
+      // if (media[media.length - 1].mqAlias === 'gt-xs'){
+      //   console.log('desktop');
+      // } else {
+      //   console.log('mobile');
+      // }
     });
 
     console.log(mediaObserver.isActive('gt-xs'));
+
+    console.log(mediaObserver.filterOverlaps);
   }
 
   changeBgColor(){
