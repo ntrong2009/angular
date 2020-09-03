@@ -3,3 +3,6 @@ https://v6.material.angular.io/guide/getting-started
 
 npm i -s @angular/flex-layout @angular/cdk
 https://github.com/angular/flex-layout
+
+npm install @ngx-translate/core --save
+https://github.com/ngx-translate/core
