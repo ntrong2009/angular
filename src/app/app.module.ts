@@ -4,9 +4,14 @@ import { AppComponent } from './app.component';
 
 
 
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
 
 
+export function createTranslateLoader(http: HttpClient){
+  return new TranslateHttpLoader(http, './data/', 'db.json');
+}
 
 
 @NgModule({
@@ -17,6 +22,11 @@ import { TranslateModule } from '@ngx-translate/core';
     BrowserModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
     }),
   ],
   providers: [],
