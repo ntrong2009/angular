@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, take } from 'rxjs/operators';
-import { setInterval } from 'timers';
 
 @Component({
   selector: 'app-async',
