@@ -1,0 +1,22 @@
+<!-- ví dụ ng-content -->
+<div class="heading">
+    <ng-content select="header"></ng-content>
+</div>
+<div class="body">
+    <ng-content select="span"></ng-content>
+</div>
+<div class="footer">
+    <ng-content></ng-content>
+</div>
+
+<div>
+    <ng-content select=".content"></ng-content>
+</div>
+
+<div>
+    <ng-content select="[data-attr=dataAttr]"></ng-content>
+</div>
+
+<div>
+    <ng-content select="footer[data-footer=dataFooter]"></ng-content>
+</div>

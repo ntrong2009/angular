@@ -1,1 +1,43 @@
-<img src="/assets/images/active-member.svg" alt="">
+<!-- ví dụ ng-template -->
+<!-- <div *ngIf="shouldSayHello" class="hello-world">hello world</div>
+
+<ng-template [ngIf]="shouldSayHello">
+  <div class="hello-world">hello world</div>
+</ng-template>
+
+<ng-template *ngIf="shouldSayHello">ádadsadsa</ng-template> -->
+
+
+
+
+<!-- ví dụ ng ng-container -->
+<!-- <div *ngFor="let item of data">
+  <div *ngIf="item.id">{{ item.name }}</div>
+</div>
+
+<ng-container *ngFor="let item of data">
+  <div *ngIf="item.id">{{ item.name }}</div>
+</ng-container>
+ -->
+
+ <app-card>
+
+    <div data-attr="dataAttr">
+      <p>đây là select sử dụng attribute</p>
+    </div>
+  
+    <footer data-footer="dataFooter">
+      <p>đây là select sử dụng thẻ kết hợp với attribute</p>
+    </footer>
+  
+    <header>
+      <h1>đây là select sử dụng thẻ</h1>
+    </header>
+    <span>this is body</span>
+    <div>this is footer of card</div>
+  
+    <div class="content">
+      <p>đây là select sử dụng class</p>
+    </div>
+  
+  </app-card>
