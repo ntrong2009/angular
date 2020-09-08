@@ -10,6 +10,8 @@ import { map, take } from 'rxjs/operators';
 export class AsyncComponent implements OnInit {
 
   promise: Promise<string>;
+  observableData: number;
+  subscription: object;
 
   constructor() { }
 
@@ -21,5 +23,9 @@ export class AsyncComponent implements OnInit {
     return new Promise((resolve, reject) => {
       setTimeout(() => resolve('promise complete'), 3000);
     });
+  }
+
+  getObserver(){
+    return Observable
   }
 }
