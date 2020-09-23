@@ -15,5 +15,7 @@
 <a [routerLink]='[{ outlets: { secondRouter: ["C"] } }]'>C</a>
 <a [routerLink]='[{ outlets: { secondRouter: ["D"] } }]'>D</a>
 
-<router-outlet></router-outlet>
+<div [@triggerName]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+</div>
 <router-outlet name='secondRouter'></router-outlet>

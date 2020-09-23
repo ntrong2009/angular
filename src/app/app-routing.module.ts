@@ -14,20 +14,46 @@ const routes: Routes = [
   //   component: SideBarComponent
   // },
   // {
-  //   path: "products", 
+  //   path: "products",
   //   component: ProductListComponent
   // },
   // {
-  //   path: "products", 
+  //   path: "products",
   //   outlet: "sidebar",
   //   component: ProductListSidebarComponent,
   // },
 
-  { path: 'A', component: AComponentComponent },
-  { path: 'B', component: BComponentComponent },
-  { path: 'C', component: CComponentComponent, outlet: 'secondRouter' },
-  { path: 'D', component: DComponentComponent, outlet: 'secondRouter' }
-]
+  {
+    path: 'A',
+    component: AComponentComponent,
+    data: {
+      state: 'AnimationA'
+    }
+  },
+  {
+    path: 'B',
+    component: BComponentComponent,
+    data: {
+      state: 'AnimationB'
+    }
+  },
+  {
+    path: 'C',
+    component: CComponentComponent,
+    outlet: 'secondRouter',
+    data: {
+      state: 'AnimationC'
+    }
+  },
+  {
+    path: 'D',
+    component: DComponentComponent,
+    outlet: 'secondRouter',
+    data: {
+      state: 'AnimationD'
+    }
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
