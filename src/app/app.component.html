@@ -1,4 +1,6 @@
-<!-- <div [style.background]="changeBg ? '#000' : '#FFF' " >abcde</div> -->
-<div [ngStyle]="changeBg ? {'background' : '#000'} : {'background' : '#FFF'}">aaaaa</div>
+<div [style.background]="changeBg ? 'blue' : 'thistle' " >a</div>
+<div [ngStyle]="changeBg ? {'background' : 'aquamarine'} : {}">b</div>
+<div [ngStyle]="changeBg && {'background' : 'green'}">c</div>
+<div [ngStyle]="{'background' : changeBg ? 'burlywood' : 'peru'}">d</div>
 
 <button (click)="changeBgColor()">change background</button>

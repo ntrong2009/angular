@@ -14,7 +14,7 @@ export class AppComponent {
     public mediaObserver: MediaObserver
   ){
     mediaObserver.media$.subscribe((mediaChange: MediaChange) => {
-      console.log('media$', mediaChange);
+      // console.log('media$', mediaChange);
     });
 
     mediaObserver.asObservable().subscribe((media: MediaChange[]) => {
@@ -28,7 +28,7 @@ export class AppComponent {
 
     console.log(mediaObserver.isActive('gt-xs'));
 
-    console.log(mediaObserver.filterOverlaps);
+    // console.log(mediaObserver.filterOverlaps);
   }
 
   changeBgColor(){
