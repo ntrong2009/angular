@@ -1,1 +1,10 @@
-<img src="/assets/images/active-member.svg" alt="">
+<div>I am first div</div>
+<ng-container #vc></ng-container>
+<div>I am last div</div>
+
+<ng-template #tpl>
+    <span>insert span in template</span>
+</ng-template>
+
+<button (click)="insertView()">insert view</button>
+<button (click)="deleteView()">delete view</button>
