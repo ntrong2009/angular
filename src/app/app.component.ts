@@ -33,7 +33,7 @@ export class AppComponent {
   title = 'angular';
 
   prepareRoute(outlet: RouterOutlet){
-    console.log(outlet.activatedRouteData.state);
+    console.log('%c outlet data', 'color: red', outlet.activatedRouteData.state);
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.state;
   }
 }
