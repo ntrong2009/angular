@@ -1,5 +1,0 @@
-cài đặt :  npm install @angular/cdk
-
-import trong app.module.ts : import { LayoutModule } from '@angular/cdk/layout';
-
-sử dụng ở bất kỳ component nào : import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
