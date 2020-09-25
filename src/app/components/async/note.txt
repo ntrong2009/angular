@@ -1,0 +1,7 @@
+- đặc biệt của async pipe là statefule - sẽ duy trì subscription với Observer input và giữ 
+cho việc cung cấp các giá trị từ Observer đó khi chúng đến
+
+- tự động subscribre đến observer và nhận giá trị cuối và tự động unsubcribre, nó cũng có thể 
+subscribre đến một promise và gọi phương thức then
+
+=> duy trì trạng thái theo dõi, như vậy thì sẽ không bỏ sót bất kỳ giá trị nào được tạo ra

@@ -1,22 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { interval, Observable, of, Subscription } from 'rxjs';
+import { delay, map, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-async',
   templateUrl: './async.component.html',
   styleUrls: ['./async.component.css']
 })
-export class AsyncComponent implements OnInit {
+export class AsyncComponent implements OnInit, OnDestroy {
 
   promise: Promise<string>;
-  observableData: number;
-  subscription: object;
+
+  observableData: Observable<number>;
+  // observableData: number;
+
+  subscription: Subscription;
 
   constructor() { }
 
   ngOnInit(): void {
     this.promise = this.getPromise();
+    // this.subscription = this.getObserver().subscribe(value => this.observableData = value);
+    this.observableData = this.getObserver();
   }
 
   getPromise(): Promise<string>{
@@ -26,6 +31,16 @@ export class AsyncComponent implements OnInit {
   }
 
   getObserver(){
-    return Observable
+    return interval(1000).pipe(
+      delay(3000),
+      take(5),
+      map(v => v),
+    );
+  }
+
+  ngOnDestroy(){
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }
