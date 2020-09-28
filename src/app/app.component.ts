@@ -38,14 +38,14 @@ export class AppComponent implements OnInit {
 
     this.breakpointObserver.observe(['(min-width: 900px)']).subscribe((state: BreakpointState) => {
       if (state.matches){
-        console.log('Viewport is 900px or over!');
+        console.log('%cViewport is 900px or over!', 'color: green');
       } else {
-        console.log('Viewport is smaller than 900px!');
+        console.log('%cViewport is smaller than 900px!', 'color: green');
       }
     });
 
     if (this.breakpointObserver.isMatched('(min-height: 900px)')) {
-      console.log('The 900px viewport matched!');
+      console.log('%cThe 900px viewport matched!', 'color: red');
     }
   }
 }
