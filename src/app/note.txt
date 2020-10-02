@@ -1,0 +1,2 @@
+ViewContainerRef chính là nơi template được put vào
+

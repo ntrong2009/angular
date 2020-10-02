@@ -17,6 +17,7 @@ export class AppComponent implements AfterViewInit {
 
   insertView(){
     const view = this.tpl.createEmbeddedView(null);
+    console.log(view);
     this.vc.insert(view);
   }
 
