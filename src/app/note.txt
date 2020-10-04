@@ -1,0 +1,5 @@
+interceptor sẽ xử lý tất cả các request trước khi trả về cho obserable, nó là trung gian ở giữa chế biến dữ liệu
+rồi mới chuyển đi cho subscriber
+
+để thực hiện 1 interceptor cần khai báo một class implement HttpInterceptor và một function single
+intercep()
