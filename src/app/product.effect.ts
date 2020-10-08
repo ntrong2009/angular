@@ -18,7 +18,7 @@ export class CounterEffect{
         ofType('load_product'),
         mergeMap(() => this.counterService.getData().pipe(
             map(product => ({type: 'load_product_success', payload: product})),
-            catchError(()=> EMPTY)
+            catchError(() => EMPTY)
         ))
     ));
 }
