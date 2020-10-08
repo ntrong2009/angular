@@ -10,11 +10,13 @@ export class ItcInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
+        // const observer = new Observable();
+
         return new Observable(observer => {
             const subscription = next.handle(req).pipe().subscribe(
                 event => {
-                    console.log('call success');
-                    observer.next(event);
+                    // console.log('call success');
+                    return observer.next(event);
                 },
                 // error => {
                 //     console.log('error');

@@ -1,9 +1,7 @@
-npm install --save @angular/material @angular/cdk
-https://v6.material.angular.io/guide/getting-started
+angular sẽ thực thi hàm được đăng ký bởi mã APP_INITIALIZER khi ứng dụng load,
+nếu function trả về một promise, angular sẽ đợi cho đến khi hàm resolve được gọi
 
-npm i -s @angular/flex-layout @angular/cdk
-https://github.com/angular/flex-layout
+APP_INITIALIZER sẽ chạy khi ứng dụng được khởi tạo, angular sẽ đình chỉ sự khởi tạo 
+cho đến khi tất cả các hàm đăng ký bởi APP_INITIALIZER chạy
+nếu bất kỳ hàm nào trong đó trả về một Promise, sẽ được đợi cho đến khi hàm resolve gọi
 
-npm install @ngx-translate/core --save
-npm install @ngx-translate/http-loader --save
-https://github.com/ngx-translate/core
