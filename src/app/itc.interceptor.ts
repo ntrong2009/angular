@@ -9,7 +9,22 @@ import { Injectable } from '@angular/core';
 export class ItcInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
         return new Observable(observer => {
+            const subscription = next.handle(req).pipe().subscribe(
+                event => {
+                    console.log('call success');
+                    observer.next(event);
+                },
+                // error => {
+                //     console.log('error');
+                //     observer.next(error);
+                // }
+            );
+
+            return () => {
+                subscription.unsubscribe();
+            };
         });
     }
 }
