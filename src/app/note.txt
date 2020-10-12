@@ -1,0 +1,2 @@
+npm install @ctrl/ngx-emoji-mart
+https://github.com/scttcper/ngx-emoji-mart#installation
