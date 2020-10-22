@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular';
+  value = 0;
+
+  MaliciousData = 'Hello <script>alert("your application is hacked")</script>';
+
+  changeValue() {
+    this.value = Math.random();
+  }
 }
