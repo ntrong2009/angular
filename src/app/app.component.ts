@@ -11,6 +11,8 @@ export class AppComponent implements OnInit {
   constructor(public breakpointObserver: BreakpointObserver){}
 
   ngOnInit() {
+
+    // theo dõi sự thay đổi của màn hình theo chiều ngang
     this.breakpointObserver.observe([
       Breakpoints.XSmall,
       Breakpoints.Small,
@@ -44,8 +46,18 @@ export class AppComponent implements OnInit {
       }
     });
 
-    if (this.breakpointObserver.isMatched('(min-height: 900px)')) {
+
+    if (this.breakpointObserver.isMatched('(max-width: 900px)')) {
       console.log('%cThe 900px viewport matched!', 'color: red');
     }
+
+    this.breakpointObserver.observe([
+      '(orientation: portrait)', // working with min width 354px
+      '(orientation: landscape)', // working with min height 354px
+      '(min-height: 500px)'
+    ]).subscribe(result => {
+      console.log('%clayout change', 'color: red');
+    });
+
   }
 }
