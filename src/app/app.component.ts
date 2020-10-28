@@ -9,4 +9,15 @@ import { products } from './product';
 export class AppComponent {
   title = 'angular';
   public gridData: any[] = products;
+
+  public opened = true;
+
+  public close(status) {
+    console.log(`Dialog result: ${status}`);
+    this.opened = false;
+  }
+
+  public open() {
+    this.opened = true;
+  }
 }

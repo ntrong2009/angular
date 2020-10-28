@@ -1,4 +1,9 @@
-<kendo-grid [data]="gridData" [height]="410">
+<!-- <kendo-grid [data]="gridData" [height]="410" [selectable]="{ enabled: true, checkboxOnly: true }">
+    <kendo-grid-column field="Discontinued" title="Discontinued" width="120">
+        <ng-template kendoGridCellTemplate let-dataItem>
+            <input type="checkbox" [checked]="dataItem.Discontinued"/>
+        </ng-template>
+    </kendo-grid-column>
     <kendo-grid-column field="ProductID" title="ID" width="40">
     </kendo-grid-column>
     <kendo-grid-column field="ProductName" title="Name" width="250">
@@ -9,9 +14,17 @@
     </kendo-grid-column>
     <kendo-grid-column field="UnitsInStock" title="In stock" width="80">
     </kendo-grid-column>
-    <kendo-grid-column field="Discontinued" title="Discontinued" width="120">
-        <ng-template kendoGridCellTemplate let-dataItem>
-            <input type="checkbox" [checked]="dataItem.Discontinued" disabled/>
-        </ng-template>
-    </kendo-grid-column>
-</kendo-grid>
+</kendo-grid> -->
+
+
+
+<div class="example-wrapper">
+    <button kendoButton *ngIf="!opened" (click)="open()">Open dialog</button>
+    <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')" [minWidth]="250" [width]="450">
+        <p style="margin: 30px; text-align: center;">Are you sure you want to continue?</p>
+        <kendo-dialog-actions>
+            <button kendoButton (click)="close('no')">No</button>
+            <button kendoButton (click)="close('yes')" primary="true">Yes</button>
+        </kendo-dialog-actions>
+    </kendo-dialog>
+  </div>
