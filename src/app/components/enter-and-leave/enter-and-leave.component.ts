@@ -17,6 +17,18 @@ import { trigger, transition, style, animate, query, stagger } from '@angular/an
       )
     ]),
 
+    trigger('slide', [
+      transition(':enter', [
+        style({transform: 'translateX(100%)'}),
+        animate('3s ease', style({transform: 'translateX(0)'}))
+      ]),
+
+      transition(':leave', [
+        style({transform: 'translateX(0)'}),
+        animate('3s ease', style({transform: 'translateX(100%)'}))
+      ])
+    ]),
+
     trigger('filterAnimation', [
       transition(':enter, * => 0, * => -1', []),
 

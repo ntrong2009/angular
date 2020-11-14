@@ -1,0 +1,20 @@
+<button (click)="expchange()">Toggle</button>
+<div>{{ exp === true ? 1 : 0 }}</div>
+<hr>
+
+<div [@parentAnimation]="exp" (@parentAnimation.done)="logdata($event)">
+    <h2 class="h2-ne">Hello</h2>
+    <div [@childAnimation]="exp" class="in">
+        one
+    </div>
+    <div [@childAnimation]="exp" class="in">
+        two
+    </div>
+    <div [@childAnimation]="exp" class="in">
+        three
+    </div>
+</div>
+
+<div [@childAnimation]="exp" class="noin">
+    not in child
+</div>
