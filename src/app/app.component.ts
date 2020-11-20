@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { Observable, of, empty } from 'rxjs';
+import { Timer } from './services/Creation/timer.service';
+import { Filter } from './services/Filtering/filter.service';
+import { TakeUntile } from './services/Filtering/takeIntil.service';
 
 @Component({
   selector: 'app-root',
@@ -7,19 +9,25 @@ import { Observable, of, empty } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular';
 
-  rx = new Observable<any>();
-  empty = empty();
-  arr = of([1,2,3,4]);
+  constructor(
+    private timer: Timer,
+    private takeUntile: TakeUntile,
+    private filter: Filter,
+  ){
+    this.FilteringRun();
+  }
 
-  constructor(){
-    this.arr.subscribe(data => {
-      console.log(data);
-    })
+  CreationRun() {
+    this.timer.timerEmits_1_valueThenCompletes();
+    this.timer.timerEmitsAfter_5_SecondThenEvery_2_Seconds();
+  }
 
-    this.empty.subscribe(data => {
-      console.log('data empty', data);
-    })
+  FilteringRun() {
+    // this.takeUntile.takeValuesUntilTimerEmits();
+
+    // this.filter.filterForEventNumber();
+    // this.filter.filterObjectBasedOnProperty();
+    this.filter.filterForNumberGreaterThanSpecifiedValue();
   }
 }
