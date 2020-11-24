@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Timer } from './services/Creation/timer.service';
-import { Filter } from './services/Filtering/filter.service';
-import { TakeUntile } from './services/Filtering/takeIntil.service';
+import { TimerService } from './services/Operators/Creation/timer.service';
+import { FilterService } from './services/Operators/Filtering/filter.service';
+import { TakeUntileService } from './services/Operators/Filtering/takeIntil.service';
+import { SubjectService } from './services/Subjects/Subject.service';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +12,13 @@ import { TakeUntile } from './services/Filtering/takeIntil.service';
 export class AppComponent {
 
   constructor(
-    private timer: Timer,
-    private takeUntile: TakeUntile,
-    private filter: Filter,
+    private timer: TimerService,
+    private takeUntile: TakeUntileService,
+    private filter: FilterService,
+    private subject: SubjectService
   ){
     this.FilteringRun();
+    this.SubjectRun();
   }
 
   CreationRun() {
@@ -28,6 +31,10 @@ export class AppComponent {
 
     // this.filter.filterForEventNumber();
     // this.filter.filterObjectBasedOnProperty();
-    this.filter.filterForNumberGreaterThanSpecifiedValue();
+    // this.filter.filterForNumberGreaterThanSpecifiedValue();
+  }
+
+  SubjectRun() {
+    this.subject.simpleSubject();
   }
 }

@@ -3,7 +3,7 @@ import { interval, timer } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
-export class TakeUntile {
+export class TakeUntileService {
 
     // takeUntil(notifier: Observable): Observable
     constructor() {}

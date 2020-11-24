@@ -3,7 +3,7 @@ import { from, interval } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
-export class Filter {
+export class FilterService {
     // filter(select: Function, thisArg: any): Observable
     constructor() {}
 

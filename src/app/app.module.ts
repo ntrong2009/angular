@@ -2,9 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { Timer } from './services/Creation/timer.service';
-import { TakeUntile } from './services/Filtering/takeIntil.service';
-import { Filter } from './services/Filtering/filter.service';
+import { TimerService } from './services/Operators/Creation/timer.service';
+import { TakeUntileService } from './services/Operators/Filtering/takeIntil.service';
+import { FilterService } from './services/Operators/Filtering/filter.service';
+import { SubjectService } from './services/Subjects/Subject.service';
 
 @NgModule({
   declarations: [
@@ -14,9 +15,10 @@ import { Filter } from './services/Filtering/filter.service';
     BrowserModule
   ],
   providers: [
-    Timer,
-    TakeUntile,
-    Filter
+    TimerService,
+    TakeUntileService,
+    FilterService,
+    SubjectService
   ],
   bootstrap: [AppComponent]
 })

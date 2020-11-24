@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { timer } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
-export class Timer {
+export class TimerService {
 
     // timer(initialDelay: number | Date, period: number, scheduler: Scheduler): Observable
     source2 = timer (7000, 1000); // emit value after 7 second, then every 1 second
