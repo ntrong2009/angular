@@ -7,6 +7,7 @@ export class FilterService {
     // filter(select: Function, thisArg: any): Observable
     constructor() {}
 
+    // filter theo điều kiện
     filterForEventNumber() {
         const source = from([1, 2, 3, 4, 5]);
         const example = source.pipe(filter(num => num % 2 === 0));
@@ -15,6 +16,7 @@ export class FilterService {
         });
     }
 
+    // filter theo object dựa trên thuộc tính của object đó
     filterObjectBasedOnProperty() {
         const source = from([
             { name: 'Joe', age: 31 },
@@ -24,6 +26,7 @@ export class FilterService {
         const subscribe = example.subscribe(val => console.log(val));
     }
 
+    // filter theo giá trị lớn hơn giá trị chỉ định
     filterForNumberGreaterThanSpecifiedValue() {
         const source = interval(1000);
         const example = source.pipe(filter(num => num > 5));
