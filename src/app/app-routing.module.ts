@@ -8,6 +8,11 @@ import { DefaultComponent } from './default/default.component';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: '/default',
+    pathMatch: 'full'
+  },
+  {
+    path: 'default',
     component: DefaultComponent
   },
   {
@@ -15,7 +20,7 @@ const routes: Routes = [
     component: DogComponent,
   },
   {
-    path: 'cat',
+    path: 'cat/:id',
     component: CatComponent
   }
 ];
