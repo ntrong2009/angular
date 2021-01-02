@@ -1,6 +1,11 @@
-<div [style.background]="changeBg ? 'blue' : 'thistle' " >a</div>
+<!-- <div [style.background]="changeBg ? 'blue' : 'thistle' " >a</div>
 <div [ngStyle]="changeBg ? {'background' : 'aquamarine'} : {}">b</div>
 <div [ngStyle]="changeBg && {'background' : 'green'}">c</div>
 <div [ngStyle]="{'background' : changeBg ? 'burlywood' : 'peru'}">d</div>
 
-<button (click)="changeBgColor()">change background</button>
+<button (click)="changeBgColor()">change background</button> -->
+
+<div fxLayout="column" style="width: 100px; height: 100px; background: #000;">
+    <div style="width: 10px; height: 10px; margin: 5px; background: #FFF;"></div>
+    <div style="width: 10px; height: 10px; margin: 5px; background: #FFF;"></div>
+</div>
