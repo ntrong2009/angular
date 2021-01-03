@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -13,9 +13,9 @@ interface Courses {
 }
 
 
-const param = new HttpParams()
-  .set('orderBy', '$key')
-  .set('limitToFirst', '1');
+const param = new HttpParams({
+  fromString: 'fromString=val'
+}).set('orderBy', '$key').set('limitToFirst', '1');
 
 @Component({
   selector: 'app-root',
@@ -30,12 +30,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get('http://localhost:3000/data', {params: param})
+    this.http.get('http://localhost:3500/data', {params: param})
       .pipe(map(data => {
-        console.log('%c%s', 'color: #ff0000', 'data before map', data);
         return _.values(data);
       })).subscribe(data => {
         console.log('%c%s', 'color: #00e600', 'data after map', data);
       });
+
+    const req = new HttpRequest('GET', 'http://localhost:3500/data');
+    this.http.request(req).subscribe(data => console.log('data'));
   }
 }
