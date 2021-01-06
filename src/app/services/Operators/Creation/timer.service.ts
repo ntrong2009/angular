@@ -9,7 +9,6 @@ export class TimerService {
 
     constructor() {}
 
-    // truyền vào 1 giá trị và tăng dần theo thời gian mỗi lần 5s
     timerEmits_1_valueThenCompletes() {
         // emit 0 after 5 second then complete, since no second argument is supplied
         const source = timer(5000);

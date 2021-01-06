@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
+import { StartWithService } from './services/Operators/Combination/startWith.service';
 import { TimerService } from './services/Operators/Creation/timer.service';
 import { FilterService } from './services/Operators/Filtering/filter.service';
 import { TakeUntileService } from './services/Operators/Filtering/takeIntil.service';
+import { ShareService } from './services/Operators/Multicasting/share.service';
+import { SwitchMapService } from './services/Operators/Transformation/switchMap.service';
 import { SubjectService } from './services/Subjects/Subject.service';
 
 @Component({
@@ -15,15 +18,29 @@ export class AppComponent {
     private timer: TimerService,
     private takeUntile: TakeUntileService,
     private filter: FilterService,
-    private subject: SubjectService
+    private shareService: ShareService,
+    private switchMapService: SwitchMapService,
+    private subject: SubjectService,
+    private startWithService: StartWithService
+
   ){
+    this.CreationRun();
+    this.CombinationRun();
+    this.MulticastingRun();
     this.FilteringRun();
-    this.SubjectRun();
+    this.TransformationRun();
   }
 
+  //#region Operator
+
   CreationRun() {
-    this.timer.timerEmits_1_valueThenCompletes();
-    this.timer.timerEmitsAfter_5_SecondThenEvery_2_Seconds();
+    // this.timer.timerEmits_1_valueThenCompletes();
+    // this.timer.timerEmitsAfter_5_SecondThenEvery_2_Seconds();
+  }
+
+  CombinationRun() {
+    // this.startWithService.startWithOnNumberSequence();
+    this.startWithService.startWithMultipleValues();
   }
 
   FilteringRun() {
@@ -33,6 +50,17 @@ export class AppComponent {
     // this.filter.filterObjectBasedOnProperty();
     // this.filter.filterForNumberGreaterThanSpecifiedValue();
   }
+
+  TransformationRun() {
+    // this.switchMapService.restartIntervalOnEveryClick();
+    // this.switchMapService.countDownTimerWithPauseAndResume();
+  }
+
+  MulticastingRun() {
+    // this.shareService.share();
+  }
+
+  //#endregion
 
   SubjectRun() {
     this.subject.simpleSubject();
