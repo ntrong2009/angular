@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { products } from './product';
+import { sampleProducts } from './product';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +8,6 @@ import { products } from './product';
 })
 export class AppComponent {
   title = 'angular';
-  public gridData: any[] = products;
+  public gridData: any[] = sampleProducts;
 
-  public opened = true;
-
-  public close(status) {
-    console.log(`Dialog result: ${status}`);
-    this.opened = false;
-  }
-
-  public open() {
-    this.opened = true;
-  }
 }

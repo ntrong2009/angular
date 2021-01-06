@@ -1,2 +1,25 @@
-npm install @ctrl/ngx-emoji-mart
-https://github.com/scttcper/ngx-emoji-mart#installation
+kendo-grid : 
+    ( 
+        [data] : data để load ra table
+        [height] : chiều cao của table
+        [filterable] : true or false, cho filter hoặc không
+    )
+
+    kendo-grid-column : là các cột trong kendo-grid
+        (
+            kendoGridCellTemplate : là một directive trong kendo-grid-column cho customize lại value bên trong
+                (
+                    let-dataItem
+                    let-rowIndex="rowIndex"
+                    let-columnIndex="columnIndex"
+                    let-column="column"
+                )
+
+            kendoGridFilterCellTemplate : là 1 directive trong kendo-grid-column cho phép customize filter
+                (
+                    let-filter 
+                    let-column="column"
+                )
+
+            [filterable] : true or false, cho filter hoặc không trên chính cột
+        )

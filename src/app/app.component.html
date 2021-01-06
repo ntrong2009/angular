@@ -1,24 +1,65 @@
-<!-- <kendo-grid [data]="gridData" [height]="410" [selectable]="{ enabled: true, checkboxOnly: true }">
-    <kendo-grid-column field="Discontinued" title="Discontinued" width="120">
-        <ng-template kendoGridCellTemplate let-dataItem>
-            <input type="checkbox" [checked]="dataItem.Discontinued"/>
+<kendo-grid 
+    [data]="gridData"
+    [height]="410"
+    [selectable]="{ enabled: true, checkboxOnly: true }"
+    
+    [groupable]="false"
+    [sortable]="true">
+
+    <kendo-grid-column
+        field="Discontinued"
+        title="Discontinued"
+        width="120">
+        <ng-template kendoGridCellTemplate 
+            let-dataItem>
+            <input type="checkbox" 
+                [checked]="dataItem.Discontinued"/>
         </ng-template>
     </kendo-grid-column>
-    <kendo-grid-column field="ProductID" title="ID" width="40">
+
+    <kendo-grid-column 
+        field="ProductID"
+        title="ID"
+        width="200">
+        <ng-template kendoGridCellTemplate 
+            let-dataItem
+            let-rowIndex="rowIndex"
+            let-columnIndex="columnIndex"
+            let-column="column">
+                <span>{{ dataItem.ProductID }}</span>
+                <span>Row: {{rowIndex}}</span>
+                <span>Column: {{columnIndex}}</span>
+                <span>{{ column }}</span>
+        </ng-template>
     </kendo-grid-column>
-    <kendo-grid-column field="ProductName" title="Name" width="250">
+
+    <kendo-grid-column 
+        field="ProductName"
+        title="Name" 
+        width="250">
+        <ng-template kendoGridFilterCellTemplate 
+            let-filter 
+            let-column="column">
+            <kendo-grid-string-filter-cell [column]="column" 
+            operator="eq">
+                <kendo-filter-eq-operator></kendo-filter-eq-operator>
+            </kendo-grid-string-filter-cell>
+        </ng-template>
     </kendo-grid-column>
+
     <kendo-grid-column field="Category.CategoryName" title="Category">
     </kendo-grid-column>
+
     <kendo-grid-column field="UnitPrice" title="Price" width="80">
     </kendo-grid-column>
+
     <kendo-grid-column field="UnitsInStock" title="In stock" width="80">
     </kendo-grid-column>
-</kendo-grid> -->
+</kendo-grid>
 
 
 
-<div class="example-wrapper">
+<!-- <div class="example-wrapper">
     <button kendoButton *ngIf="!opened" (click)="open()">Open dialog</button>
     <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')" [minWidth]="250" [width]="450">
         <p style="margin: 30px; text-align: center;">Are you sure you want to continue?</p>
@@ -27,4 +68,4 @@
             <button kendoButton (click)="close('yes')" primary="true">Yes</button>
         </kendo-dialog-actions>
     </kendo-dialog>
-  </div>
+</div> -->
