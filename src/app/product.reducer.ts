@@ -1,7 +1,7 @@
 import { createReducer, on, Action } from '@ngrx/store';
 import {
-    load_product,
-    load_product_success
+    loadProduct,
+    loadProductSuccess
 } from 'src/app/product.actions';
 import { ProductModel } from 'src/app/product.model';
 import { from } from 'rxjs';
@@ -12,8 +12,8 @@ export interface State{
 
 const productReducer = createReducer(
     {},
-    on(load_product, (state) => ({ ...state, product: undefined })),
-    on(load_product_success, (state, {payload}) => ({ ...state, product: payload }))
+    on(loadProduct, (state) => ({ ...state, product: undefined })),
+    on(loadProductSuccess, (state, {payload}) => ({ ...state, product: payload }))
 );
 
 export function reducer(state: State, action: Action){
