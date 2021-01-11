@@ -1,17 +1,20 @@
-kendo-grid : 
-    ( 
+<kendo-grid> : 
+    { 
         [data] : data để load ra table
         [height] : chiều cao của table
-        [filterable] : true or false, cho filter hoặc không
-    )
+        [filterable] : true or false, cho filter hoặc không trên tất cả các cột có trong table
+        (dataStateChange) : output ra sự kiện này khi có filter trên table
+    }
 
-    kendo-grid-column : là các cột trong kendo-grid
-        (
-            kendoGridCellTemplate : là một directive trong kendo-grid-column cho customize lại value bên trong
+    <kendo-grid-column> : là các cột trong kendo-grid
+        {
+            [filterable] : true or false, cho filter hoặc không trên chính cột
+            
+            kendoGridCellTemplate : là một directive trong kendo-grid-column cho customize lại value bên trong cột
                 (
-                    let-dataItem
-                    let-rowIndex="rowIndex"
-                    let-columnIndex="columnIndex"
+                    let-dataItem : lấy toàn bộ giá trị trên 1 row
+                    let-rowIndex="rowIndex" : lấy vị trí của row
+                    let-columnIndex="columnIndex": lấy vị trí của column
                     let-column="column"
                 )
 
@@ -19,7 +22,8 @@ kendo-grid :
                 (
                     let-filter 
                     let-column="column"
-                )
 
-            [filterable] : true or false, cho filter hoặc không trên chính cột
-        )
+                    <kendo-multiselect>
+                    <kendo-grid-string-filter-cell>
+                )
+        }
