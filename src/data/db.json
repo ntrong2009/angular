@@ -1,0 +1,22 @@
+{
+    "profile": {
+        "culture": "dk",
+        "countryCode": "dk",
+        "languageCode": "da",
+        "id": 13225,
+        "publicId": "01071093-e90e-41bd-826a-5a23955212b2",
+        "screenName": "ngoctrong65",
+        "avatarUrl": "https://files.infodationdev.com/assets/images/default-match-photo-male.svg",
+        "address": null,
+        "age": 0,
+        "gender": "M",
+        "introduction": null,
+        "isPremium": true,
+        "memberType": "F",
+        "language": 0,
+        "country": 0,
+        "isDeletedUser": false,
+        "isFavorite": false,
+        "sports": null
+    }
+}
