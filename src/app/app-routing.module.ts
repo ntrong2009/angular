@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { ObserverComponent } from './component/observer/observer.component';
+import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 
 const route: Routes = [
     {
@@ -10,7 +10,7 @@ const route: Routes = [
     },
     {
         path: 'page-not-found',
-        component: AppComponent
+        component: PageNotFoundComponent
     }
 ];
 
