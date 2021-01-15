@@ -1,0 +1,17 @@
+unsubscribe để tránh tình trạng memory leak, angular có hỗ trợ hook OnDestroy để biết khi nào component ko đc sử dụng nữa,
+dựa vào điều này ta có thể unsubscribe một observer.
+
+những cách để unsubscribe :
+ - sử dụng Subscription
+ - sử dụng async pipe : sẽ tự động subscribe và nhận khi có giá trị emit tới, tự động unsubscribe khi component bị hủy
+ - sử dụng Rxjs take operator
+    + take(n) : toán tử này cho phép số lần emit value tới, quá số lần define sẽ tự động unsubscribe
+    + takeUntil(notifier) : toán tử này cho phép emit value qua cho tới khi observer trong nó emit một value, sau đó sẽ unsubscribe observer hiện tại
+    + takeWhile(predicate) : toán tử này cho phép emit value qua cho tới khi value đó không thỏa điều kiện bên trong toán tử này
+    + first
+
+phương thức subscribe của observer trả về một object Rxjs có kiểu là Subscription, Subscription này đại diện cho một tài nguyên sẵn có
+
+Subscription có thể được group lại thông qua phương thức add, nó sẽ attach một child Subscription tới Subscription hiện tại,
+sau khi unsubscribe Subscription hiện tại thì tất cả các child Subscription đó sẽ bị unsubscribe theo
+
