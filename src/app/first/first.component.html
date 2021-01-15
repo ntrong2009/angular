@@ -1,0 +1,17 @@
+<p>first works!</p>
+<nav>
+    <ul>
+        <li>
+            <a routerLink="child-a">child a</a>
+        </li>
+        <li>
+            <a routerLink="child-b">child b</a>
+        </li>
+        <li>
+            <a (click)="gotoSecondComponent()">second component</a>
+            <!-- <a routerLink="../second-component">second component</a> -->
+        </li>
+    </ul>
+</nav>
+
+<router-outlet></router-outlet>
