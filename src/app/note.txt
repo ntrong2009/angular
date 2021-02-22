@@ -1,0 +1,11 @@
+angular sữ dụng kỹ thuật phát hiện thay đổi để nhận thấy sự thay đổi từ properties trong 1 object bên trong component
+cha và update nó tới tận component con
+
+việc thực hiện theo dõi sự thay đổi là mất chi phí
+vì vậy trong một số trường hợp nhất định khi component con chỉ muốn theo dõi sự thay đổi của object,
+không phải là thuộc tính bên trong object, bên trong component con sẽ khai báo :
+changeDetection: ChangeDetectionStrategy.OnPush 
+
+-> để bỏ đi sự theo dõi các giá trị bên trong object, chỉ theo dõi thay đổi khi object thay đổi
+(đây gọi là tối ưu hóa thay đổi)
+
