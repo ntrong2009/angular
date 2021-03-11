@@ -1,1 +1,10 @@
-<img src="/assets/images/active-member.svg" alt="">
+<div>
+    <form [formGroup]="formData" (ngSubmit)="onClickSubmit(formData.value)">
+        <input type="text" name="username" formControlName="username">
+        <br>
+        <input type="pwd" name="pwd" formControlName="pwd">
+        <input type="submit" value="login">
+    </form>
+</div>
+
+<h1>{{ username }}</h1>
