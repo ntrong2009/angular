@@ -16,6 +16,8 @@ const productReducer = createReducer(
     on(loadProductSuccess, (state, {payload}) => ({ ...state, product: payload }))
 );
 
+
 export function reducer(state: State, action: Action){
+    console.log('%c%s', 'color: #00e600', 'Action', action);
     return productReducer(state, action);
 }

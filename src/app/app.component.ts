@@ -22,7 +22,7 @@ export class AppComponent implements OnInit{
     this.store.dispatch({ type : 'load_product' });
 
     this.product$.subscribe(data => {
-      console.log(data);
+      console.log('%c%s', 'color: #ff0000', 'data', data);
     });
   }
 
