@@ -1,0 +1,6 @@
+Scope của ViewChild
+(
+    - truy vấn tới DOM element
+    - truy vấn tới DOM element của component con
+    - truy vấn tới Directives
+)
