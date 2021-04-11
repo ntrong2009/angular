@@ -5,7 +5,9 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class UsersService {
-  
+
+  duplicateWhenNotUnsubscribe$ = new BehaviorSubject<any>(null);
+
   private user = new BehaviorSubject<string>('john');
   cast = this.user.asObservable();
 
