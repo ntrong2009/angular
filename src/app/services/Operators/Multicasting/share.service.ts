@@ -7,10 +7,10 @@ export class ShareService {
     constructor(){}
 
     share() {
-        const source = timer(1000);
+        const source = timer(5000);
         const example = source.pipe(
             tap(() => console.log('***SIDE EFFECT***')),
-            // mapTo('***RESULT***'),
+            mapTo('***RESULT***'),
             share() // chia sẻ dữ liệu cho những nơi đăng ký
         );
 

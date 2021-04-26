@@ -40,7 +40,7 @@ export class AppComponent {
 
   CombinationRun() {
     // this.startWithService.startWithOnNumberSequence();
-    this.startWithService.startWithMultipleValues();
+    // this.startWithService.startWithMultipleValues();
   }
 
   FilteringRun() {
@@ -57,7 +57,7 @@ export class AppComponent {
   }
 
   MulticastingRun() {
-    // this.shareService.share();
+    this.shareService.share();
   }
 
   //#endregion
