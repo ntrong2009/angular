@@ -24,7 +24,7 @@ import * as ProductReducer from 'src/app/product.reducer';
       maxAge: 25,
       logOnly: true,
       actionSanitizer: (val): Action => {
-        console.log('%c%s', 'color: #00a3cc', 'val', val);
+        // console.log('%c%s', 'color: #00a3cc', 'val', val);
         return val;
       }
     }),
