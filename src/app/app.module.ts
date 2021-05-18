@@ -1,3 +1,4 @@
+import { MatTableModuleSrc } from './mat-table/mat-table.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -11,13 +12,14 @@ import { MainNavModule } from './main-nav/main-nav.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MainNavModule
+    MainNavModule,
+    MatTableModuleSrc
   ],
   providers: [],
   bootstrap: [AppComponent]
