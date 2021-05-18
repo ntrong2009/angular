@@ -42,6 +42,8 @@
     "@progress/kendo-angular-popup": "^3.0.6",
     "@progress/kendo-data-query": "^1.5.4",
     "@progress/kendo-drawing": "^1.9.3",
+    "angular-highcharts": "^11.3.1",
+    "highcharts": "^9.1.0",
     "localize": "^0.4.7",
     "lodash": "^4.17.20",
     "rxjs": "~6.5.4",
