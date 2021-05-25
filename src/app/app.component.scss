@@ -1,0 +1,15 @@
+:host {
+  background-color: aquamarine;
+
+  span {
+    color: red;
+  }
+}
+
+::ng-deep .ng-deep {
+  background-color: chocolate;
+}
+
+:host(.active) {
+  border: 1px solid #000;
+}

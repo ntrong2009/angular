@@ -2,10 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { HostContextComponent } from './host-context/host-context.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HostContextComponent
   ],
   imports: [
     BrowserModule
