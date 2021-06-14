@@ -46,8 +46,8 @@ export class MatTableComponent implements OnInit {
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
     ngOnInit() {
-        setTimeout(() => {
-            this.dataSource.paginator = this.paginator;
-        }, 5000);
+
+        this.dataSource.paginator = this.paginator;
+
     }
 }

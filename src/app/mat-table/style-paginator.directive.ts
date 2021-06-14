@@ -79,7 +79,6 @@ export class StylePaginatorDirective {
                 this._rangeEnd = this._showTotalPages - 1;
             }
             this._curPageObj = e;
-
             this.initPageRange();
         });
     }
@@ -118,10 +117,7 @@ export class StylePaginatorDirective {
                             );
                             this.ren.setStyle(nodeArray[i], 'color', 'white');
                             this.ren.setStyle(nodeArray[i], 'margin', '.5%');
-                        } else if (
-                            nodeArray[i].innerHTML.length > 100 &&
-                            !nodeArray[i].disabled
-                        ) {
+                        } else if (nodeArray[i].innerHTML.length > 100 && !nodeArray[i].disabled) {
                             this.ren.setStyle(
                                 nodeArray[i],
                                 'background-color',
@@ -137,6 +133,7 @@ export class StylePaginatorDirective {
             });
         }
 
+        console.log('%c%s', 'color: #e50000', 'this.numOfPages', this.numOfPages);
         for (let i = 0; i < this.numOfPages; i++) {
             if (i >= this._rangeStart && i <= this._rangeEnd) {
                 this.ren.insertBefore(
@@ -201,6 +198,7 @@ export class StylePaginatorDirective {
     // tslint:disable-next-line:max-line-length
     // calculates the button range based on class input parameters and based on current page index value. Used to render new buttons after event
     private initPageRange(): void {
+
         const middleIndex = (this._rangeStart + this._rangeEnd) / 2;
 
         this._rangeStart = this.calcRangeStart(middleIndex);
