@@ -43,11 +43,17 @@ export class MatTableComponent implements OnInit {
     displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
     dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
+    pageSize = 10;
+    total = 1000;
+    pageIndex = 0;
+
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
     ngOnInit() {
+        // this.dataSource.paginator = this.paginator;
+    }
 
-        this.dataSource.paginator = this.paginator;
-
+    onPaginateChange($event) {
+        this.pageIndex = $event.pageIndex;
     }
 }

@@ -47,7 +47,7 @@ export class StylePaginatorDirective {
         this._showTotalPages = value % 2 === 0 ? value + 1 : value;
     }
     // tslint:disable-next-line:variable-name
-    private _showTotalPages = 2;
+    private _showTotalPages = 3;
 
     get inc(): number {
         return this._showTotalPages % 2 === 0
@@ -79,8 +79,84 @@ export class StylePaginatorDirective {
                 this._rangeEnd = this._showTotalPages - 1;
             }
             this._curPageObj = e;
+
+            console.log('%c%s', 'color: #00258c', 'e', e);
             this.initPageRange();
         });
+    }
+
+    // Initialize default state after view init
+    // tslint:disable-next-line:use-lifecycle-interface
+    public ngAfterViewInit() {
+        this._rangeStart = 0;
+        this._rangeEnd = this._showTotalPages - 1;
+        this.initPageRange();
+    }
+
+    // tslint:disable-next-line:max-line-length
+    // calculates the button range based on class input parameters and based on current page index value. Used to render new buttons after event
+    private initPageRange(): void {
+
+        const middleIndex = (this._rangeStart + this._rangeEnd) / 2;
+
+        console.log('%c%s', 'color: #f279ca', 'middleIndex', middleIndex);
+
+        this._rangeStart = this.calcRangeStart(middleIndex);
+        this._rangeEnd = this.calcRangeEnd(middleIndex);
+
+        console.log('%c%s', 'color: #7f7700', '_rangeStart', this._rangeStart);
+        console.log('%c%s', 'color: #00ff88', '_rangeEnd', this._rangeEnd);
+
+        this.buildPageNumbers();
+    }
+
+    // Helper function To calculate start of button range
+    private calcRangeStart(middleIndex: number): number {
+        switch (true) {
+            case this._curPageObj.pageIndex === 0 && this._rangeStart !== 0:
+                console.log('%c%s', 'color: #000000f6', 've page 0');
+                return 0;
+
+            case this._curPageObj.pageIndex > this._rangeEnd:
+                console.log('%c%s', 'color: #000000f6', 'cham page cuoi');
+                // tslint:disable-next-line:max-line-length
+                return this._curPageObj.pageIndex + this.inc > this.lastPageIndex ? this.lastPageIndex - this.inc * 2 : this._curPageObj.pageIndex - this.inc;
+
+            // tslint:disable-next-line:max-line-length
+            case this._curPageObj.pageIndex > this._curPageObj.previousPageIndex && this._curPageObj.pageIndex > middleIndex && this._rangeEnd < this.lastPageIndex:
+                console.log('%c%s', 'color: #000000f6', 'next page');
+                return this._rangeStart + 1;
+
+            // tslint:disable-next-line:max-line-length
+            case this._curPageObj.pageIndex < this._curPageObj.previousPageIndex && this._curPageObj.pageIndex < middleIndex && this._rangeStart > 0:
+                console.log('%c%s', 'color: #000000f6', 'previous page');
+                return this._rangeStart - 1;
+
+            default:
+                console.log('%c%s', 'color: #ffa280', 'default');
+                return this._rangeStart;
+        }
+    }
+    // Helpter function to calculate end of button range
+    private calcRangeEnd(middleIndex: number): number {
+        switch (true) {
+            case this._curPageObj.pageIndex === 0 && this._rangeEnd !== this._showTotalPages:
+                return this._showTotalPages - 1;
+
+            case this._curPageObj.pageIndex > this._rangeEnd:
+                return this._curPageObj.pageIndex + this.inc > this.lastPageIndex ? this.lastPageIndex : this._curPageObj.pageIndex + 1;
+
+            // tslint:disable-next-line:max-line-length
+            case this._curPageObj.pageIndex > this._curPageObj.previousPageIndex && this._curPageObj.pageIndex > middleIndex && this._rangeEnd < this.lastPageIndex:
+                return this._rangeEnd + 1;
+
+            // tslint:disable-next-line:max-line-length
+            case this._curPageObj.pageIndex < this._curPageObj.previousPageIndex && this._curPageObj.pageIndex < middleIndex && this._rangeStart >= 0 && this._rangeEnd > this._showTotalPages - 1:
+                return this._rangeEnd - 1;
+
+            default:
+                return this._rangeEnd;
+        }
     }
 
     private buildPageNumbers() {
@@ -133,7 +209,6 @@ export class StylePaginatorDirective {
             });
         }
 
-        console.log('%c%s', 'color: #e50000', 'this.numOfPages', this.numOfPages);
         for (let i = 0; i < this.numOfPages; i++) {
             if (i >= this._rangeStart && i <= this._rangeEnd) {
                 this.ren.insertBefore(
@@ -159,7 +234,8 @@ export class StylePaginatorDirective {
         this.ren.setStyle(linkBtn, 'margin', '1%');
         this.ren.setStyle(linkBtn, 'background-color', 'white');
 
-        const pagingTxt = isNaN(i) ? this._pageGapTxt : +(i + 1);
+        // const pagingTxt = isNaN(i) ? this._pageGapTxt : +(i + 1);
+        const pagingTxt = isNaN(i) ? this.lastPageIndex : +(i + 1);
         const text = this.ren.createText(pagingTxt + '');
 
         this.ren.addClass(linkBtn, 'mat-custom-page');
@@ -195,62 +271,7 @@ export class StylePaginatorDirective {
         this._buttons.push(linkBtn);
         return linkBtn;
     }
-    // tslint:disable-next-line:max-line-length
-    // calculates the button range based on class input parameters and based on current page index value. Used to render new buttons after event
-    private initPageRange(): void {
 
-        const middleIndex = (this._rangeStart + this._rangeEnd) / 2;
-
-        this._rangeStart = this.calcRangeStart(middleIndex);
-        this._rangeEnd = this.calcRangeEnd(middleIndex);
-
-        this.buildPageNumbers();
-    }
-
-    // Helper function To calculate start of button range
-    private calcRangeStart(middleIndex: number): number {
-        switch (true) {
-            case this._curPageObj.pageIndex === 0 && this._rangeStart !== 0:
-                return 0;
-            case this._curPageObj.pageIndex > this._rangeEnd:
-                return this._curPageObj.pageIndex + this.inc > this.lastPageIndex
-                    ? this.lastPageIndex - this.inc * 2
-                    : this._curPageObj.pageIndex - this.inc;
-            case this._curPageObj.pageIndex > this._curPageObj.previousPageIndex &&
-                this._curPageObj.pageIndex > middleIndex &&
-                this._rangeEnd < this.lastPageIndex:
-                return this._rangeStart + 1;
-            case this._curPageObj.pageIndex < this._curPageObj.previousPageIndex &&
-                this._curPageObj.pageIndex < middleIndex &&
-                this._rangeStart > 0:
-                return this._rangeStart - 1;
-            default:
-                return this._rangeStart;
-        }
-    }
-    // Helpter function to calculate end of button range
-    private calcRangeEnd(middleIndex: number): number {
-        switch (true) {
-            case this._curPageObj.pageIndex === 0 &&
-                this._rangeEnd !== this._showTotalPages:
-                return this._showTotalPages - 1;
-            case this._curPageObj.pageIndex > this._rangeEnd:
-                return this._curPageObj.pageIndex + this.inc > this.lastPageIndex
-                    ? this.lastPageIndex
-                    : this._curPageObj.pageIndex + 1;
-            case this._curPageObj.pageIndex > this._curPageObj.previousPageIndex &&
-                this._curPageObj.pageIndex > middleIndex &&
-                this._rangeEnd < this.lastPageIndex:
-                return this._rangeEnd + 1;
-            case this._curPageObj.pageIndex < this._curPageObj.previousPageIndex &&
-                this._curPageObj.pageIndex < middleIndex &&
-                this._rangeStart >= 0 &&
-                this._rangeEnd > this._showTotalPages - 1:
-                return this._rangeEnd - 1;
-            default:
-                return this._rangeEnd;
-        }
-    }
     // Helper function to switch page on non first, last, next and previous buttons only.
     private switchPage(i: number): void {
         console.log('switch', i);
@@ -258,13 +279,6 @@ export class StylePaginatorDirective {
         this.matPag.pageIndex = i;
         // tslint:disable-next-line:no-string-literal
         this.matPag['_emitPageEvent'](previousPageIndex);
-        this.initPageRange();
-    }
-    // Initialize default state after view init
-    // tslint:disable-next-line:use-lifecycle-interface
-    public ngAfterViewInit() {
-        this._rangeStart = 0;
-        this._rangeEnd = this._showTotalPages - 1;
         this.initPageRange();
     }
 }

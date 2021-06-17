@@ -30,10 +30,11 @@
 
   <mat-paginator
     appStylePaginator
-    [showTotalPages]="3"
-    [length]="20"
-    [pageSize]="10"
+    [pageSize]="pageSize"
+    [length]="total"
+    [pageIndex]="pageIndex"
     [pageSizeOptions]="[3, 5, 10, 20]"
+    (page)="onPaginateChange($event)"
   >
   </mat-paginator>
 </div>
