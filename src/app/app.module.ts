@@ -12,6 +12,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 
 import { MainNavModule } from './main-nav/main-nav.module';
 import { MatFormFieldModuleLocal } from './mat-form-field/mat-from-field.module';
+import { MatCheckBoxModuleLocal } from './mat-checkbox/mat-checkbox.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MatFormFieldModuleLocal } from './mat-form-field/mat-from-field.module'
     MatTableModuleSrc,
     MatGridModule,
     MatAutoCompleteModule,
-    MatFormFieldModuleLocal
+    MatFormFieldModuleLocal,
+    MatCheckBoxModuleLocal
   ],
   providers: [],
   bootstrap: [AppComponent]
