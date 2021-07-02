@@ -8,18 +8,10 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  username;
-  formData;
+
   constructor() {}
 
   ngOnInit() {
-    this.formData = new FormGroup({
-      username: new FormControl('ngoctrong'),
-      pwd: new FormControl('123')
-    });
   }
 
-  onClickSubmit(data) {
-    this.username = data.username;
-  }
 }

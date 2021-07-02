@@ -1,0 +1,14 @@
+<div>
+    <form [formGroup]="formData" (ngSubmit)="onClickSubmit(formData.value)">
+        <input type="text" class="" name="username" placeholder="user name" formControlName="userName">
+        <span style="color: red;" *ngIf="formData.controls['userName'].touched && formData.controls['userName'].invalid">require user name</span>
+        <br/>
+        <input type="text" class="" name="pwd" placeholder="pwd" formControlName="pwd">
+        <br/>
+        <button type="submit">login</button>
+    </form>
+</div>
+
+<p>
+    user name : {{ userName }}
+</p>
