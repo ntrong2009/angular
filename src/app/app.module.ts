@@ -1,3 +1,4 @@
+import { MatInputModuleLocal } from './mat-input/mat-input.module';
 import { MatAutoCompleteModule } from './mat-auto-complete/mat-auto-complete.module';
 import { MatGridModule } from './mat-grid/mat-grid.module';
 import { MatTableModuleSrc } from './mat-table/mat-table.module';
@@ -16,7 +17,7 @@ import { MatCheckBoxModuleLocal } from './mat-checkbox/mat-checkbox.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +28,8 @@ import { MatCheckBoxModuleLocal } from './mat-checkbox/mat-checkbox.module';
     MatGridModule,
     MatAutoCompleteModule,
     MatFormFieldModuleLocal,
-    MatCheckBoxModuleLocal
+    MatCheckBoxModuleLocal,
+    MatInputModuleLocal
   ],
   providers: [],
   bootstrap: [AppComponent]
