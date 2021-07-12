@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 
-import { distinctUntilChanged, map } from 'rxjs/operators';
+import { distinctUntilChanged, map, filter } from 'rxjs/operators';
 
 import * as ProductAction from './product.actions';
 
@@ -14,6 +14,7 @@ import * as ProductAction from './product.actions';
 export class AppComponent implements OnInit{
 
   valueAffect = true;
+  product: any;
 
   constructor(
     private store: Store<{ productReducer: any }>,
@@ -25,15 +26,26 @@ export class AppComponent implements OnInit{
       select(state => state.productReducer),
       map(loaded => loaded.product),
       distinctUntilChanged()
-    ).subscribe(data => {
-      console.log('%c%s', 'color: #ff0000', 'data', data);
+    ).subscribe(product => {
+      this.product = product;
+      console.log('%c%s', 'color: #ff0000', 'productReducer', product);
     });
 
     this.store.pipe(
       select(state => state.productReducer),
-      map(loaded => loaded.valueAffectToProduct)
+      map(loaded => loaded.valueAffectToProduct),
+      distinctUntilChanged()
     ).subscribe(value => {
-      console.log('%c%s', 'color: #20b612', 'value affect', value);
+      console.log('%c%s', 'color: #20b612', 'valueAffectToProduct', value);
+    });
+
+    this.store.pipe(
+      select(state => state.productReducer),
+      map(loaded => loaded.errorProduct),
+      distinctUntilChanged()
+    ).subscribe(errorProduct => {
+      this.store.dispatch({ type : 'load_product' });
+      console.log('%c%s', 'color: #8c0038', 'errorProduct', errorProduct);
     });
   }
 

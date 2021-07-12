@@ -2,12 +2,14 @@ import { createReducer, on, Action } from '@ngrx/store';
 import {
     loadProduct,
     loadProductSuccess,
+    loadProductError,
     updateValueAffectToProduct
 } from 'src/app/product.actions';
 import { ProductModel } from 'src/app/product.model';
 
 export interface State{
     product: ProductModel;
+    errorProduct: any;
     valueAffectToProduct: boolean;
 }
 
@@ -19,6 +21,13 @@ const productReducer = createReducer(
         return {
             ...state,
             valueAffectToProduct: payload
+        };
+    }),
+    on(loadProductError, (state, {payload}) => {
+        console.log('%c%s', 'color: #514080', 'error load product', payload);
+        return {
+            ...state,
+            errorProduct: payload
         };
     })
 );
