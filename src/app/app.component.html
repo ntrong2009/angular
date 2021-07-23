@@ -1,1 +1,9 @@
-<img src="/assets/images/active-member.svg" alt="">
+<!-- <ng-container *ngIf="value$ | async as n">
+  <span>{{ n }}</span>
+</ng-container> -->
+
+<ng-container *ngrxLet="value$; let n; let e = $error, let c = $complete">
+  <span *ngIf="!e && !c">{{ n }}</span>
+  <span *ngIf="e">error {{ e }}</span>
+  <span *ngIf="c">complete {{ c }}</span>
+</ng-container>

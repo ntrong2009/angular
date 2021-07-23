@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -10,6 +11,7 @@ import { ReactiveComponentModule } from '@ngrx/component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     ReactiveComponentModule
   ],
   providers: [],
