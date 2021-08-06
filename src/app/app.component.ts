@@ -29,6 +29,8 @@ export class AppComponent implements OnInit{
     ).subscribe(product => {
       this.product = product;
       console.log('%c%s', 'color: #ff0000', 'productReducer', product);
+    }, (error) => {
+      console.log('%c%s', 'color: #731d1d', 'error', error);
     });
 
     this.store.pipe(
