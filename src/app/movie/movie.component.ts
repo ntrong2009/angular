@@ -7,16 +7,22 @@ import { map } from 'rxjs/operators';
   selector: 'app-movie',
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.css'],
-  providers: [ComponentStore]
+  providers: [MoviesStore]
 })
 export class MovieComponent {
   readonly userPreferredMovies$ = this.movieStore.userPreferredMovies$;
+  movies$ = this.movieStore.movies$;
 
   constructor(
     private readonly movieStore: MoviesStore
-  ) { }
+  ) {
+    this.movieStore.getMovie('1');
+    this.movies$.subscribe(movies => {
+      console.log('%c%s', 'color: #1d3f73', 'movies', movies);
+    });
+  }
 
   addMovie() {
-    this.movieStore.addMovie({ id: '3', name: 'movie 3' });
+    this.movieStore.updaterMovie({ id: '3', name: 'movie 3' });
   }
 }

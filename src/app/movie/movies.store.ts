@@ -1,6 +1,9 @@
+import { MovieService } from './movies.service';
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
+import { catchError, switchMap, tap } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export class Movie {
     id: string;
@@ -25,7 +28,9 @@ export class MoviesStore extends ComponentStore<MoviesState> {
         }
     );
 
-    constructor() {
+    constructor(
+        private movieService: MovieService
+    ) {
         super(
             {
                 movies: [
@@ -37,8 +42,26 @@ export class MoviesStore extends ComponentStore<MoviesState> {
         );
     }
 
-    readonly addMovie = this.updater((state: MoviesState, movie: Movie) => ({
+    readonly getMovie = this.effect((movieId$: Observable<string>) => {
+        return movieId$.pipe(
+            switchMap((id) => this.movieService.fetchMovie().pipe(
+                tap({
+                    next: ({ movie }) => {
+                        return this.updaterMovie(movie);
+                    },
+                    error: (e: HttpErrorResponse) => console.log(e)
+                }),
+                catchError(() => EMPTY)
+            ))
+        );
+    });
+
+
+    // ============ write
+    readonly updaterMovie = this.updater((state: MoviesState, movie: Movie) => ({
         ...state,
         movies: [...state.movies, movie],
     }));
+
+    readonly setStateMovie = this.setState({ movies: [], userPreferredMoviesIds: [] });
 }
