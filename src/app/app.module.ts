@@ -1,3 +1,4 @@
+import { MatDatePickerModule } from './mat-datepicker/mat-datepicker.module';
 import { MatInputModuleLocal } from './mat-input/mat-input.module';
 import { MatAutoCompleteModule } from './mat-auto-complete/mat-auto-complete.module';
 import { MatGridModule } from './mat-grid/mat-grid.module';
@@ -29,7 +30,8 @@ import { MatCheckBoxModuleLocal } from './mat-checkbox/mat-checkbox.module';
     MatAutoCompleteModule,
     MatFormFieldModuleLocal,
     MatCheckBoxModuleLocal,
-    MatInputModuleLocal
+    MatInputModuleLocal,
+    MatDatePickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
