@@ -9,7 +9,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ModelDrivenFormComponent implements OnInit {
 
-  userName;
+  get userName() {
+    return this.formData.controls.pwd.value;
+  }
+
+  isClickSubmnit = false;
 
   formData: FormGroup;
 
@@ -22,12 +26,15 @@ export class ModelDrivenFormComponent implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(20),
       ])),
-      pwd: new FormControl(null)
+      pwd: new FormControl('', Validators.compose([
+        Validators.required
+      ]))
     });
   }
 
-  onClickSubmit(data) {
-    this.userName = data.userName;
+  onClickSubmit(data: FormGroup) {
+    this.isClickSubmnit = true;
+    console.log('%c%s', 'color: #fceef7', 'data', data);
     this.formData.markAllAsTouched();
   }
 }

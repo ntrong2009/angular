@@ -1,14 +1,42 @@
 <div>
-    <form [formGroup]="formData" (ngSubmit)="onClickSubmit(formData.value)">
-        <input type="text" class="" name="username" placeholder="user name" formControlName="userName">
-        <span style="color: red;" *ngIf="formData.controls['userName'].touched && formData.controls['userName'].invalid">require user name</span>
-        <br/>
-        <input type="text" class="" name="pwd" placeholder="pwd" formControlName="pwd">
-        <br/>
-        <button type="submit">login</button>
-    </form>
+  <form [formGroup]="formData" (ngSubmit)="onClickSubmit(formData)">
+    <input
+      type="text"
+      class=""
+      name="username"
+      placeholder="user name"
+      formControlName="userName"
+    />
+    <br />
+    <input
+      type="text"
+      class=""
+      name="pwd"
+      placeholder="pwd"
+      formControlName="pwd"
+    />
+    <br />
+    <button type="submit">login</button>
+    <ng-container *ngIf="formData.invalid && isClickSubmnit">
+      <div
+        [ngStyle]="
+          formData.controls.userName.invalid
+            ? { color: 'red' }
+            : { color: 'green' }
+        "
+      >
+        require user name
+      </div>
+      <div
+        [ngStyle]="
+          formData.controls.pwd.invalid ? { color: 'red' } : { color: 'green' }
+        "
+        *ngIf="formData.controls.pwd.invalid"
+      >
+        require pwd
+      </div>
+    </ng-container>
+  </form>
 </div>
 
-<p>
-    user name : {{ userName }}
-</p>
+<p>user name : {{ userName }}</p>
