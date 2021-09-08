@@ -6,13 +6,12 @@ import { AppComponent } from './app.component';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
-export function createTranslateLoader(http: HttpClient){
-  return new TranslateHttpLoader(http, './data/', 'db.json');
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, 'http://localhost:1995/', '');
 }
-
 
 @NgModule({
   declarations: [
@@ -20,6 +19,7 @@ export function createTranslateLoader(http: HttpClient){
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {
