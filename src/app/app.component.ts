@@ -1,3 +1,4 @@
+import { FinalizeService } from './services/Operators/utility/finalize.service';
 import { Component } from '@angular/core';
 import { StartWithService } from './services/Operators/Combination/startWith.service';
 import { TimerService } from './services/Operators/Creation/timer.service';
@@ -21,7 +22,8 @@ export class AppComponent {
     private shareService: ShareService,
     private switchMapService: SwitchMapService,
     private subject: SubjectService,
-    private startWithService: StartWithService
+    private startWithService: StartWithService,
+    private finalizeService: FinalizeService
 
   ){
     this.CreationRun();
@@ -29,6 +31,8 @@ export class AppComponent {
     this.MulticastingRun();
     this.FilteringRun();
     this.TransformationRun();
+
+    this.finalizeService.emitWhenObserverComplete();
   }
 
   //#region Operator
@@ -57,12 +61,12 @@ export class AppComponent {
   }
 
   MulticastingRun() {
-    this.shareService.share();
+    // this.shareService.share();
   }
 
   //#endregion
 
   SubjectRun() {
-    this.subject.simpleSubject();
+    // this.subject.simpleSubject();
   }
 }
