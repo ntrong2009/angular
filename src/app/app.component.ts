@@ -41,14 +41,14 @@ export class AppComponent implements OnInit{
       console.log('%c%s', 'color: #20b612', 'valueAffectToProduct', value);
     });
 
-    this.store.pipe(
-      select(state => state.productReducer),
-      map(loaded => loaded.errorProduct),
-      distinctUntilChanged()
-    ).subscribe(errorProduct => {
-      this.store.dispatch({ type : 'load_product' });
-      console.log('%c%s', 'color: #8c0038', 'errorProduct', errorProduct);
-    });
+    // this.store.pipe(
+    //   select(state => state.productReducer),
+    //   map(loaded => loaded.errorProduct),
+    //   distinctUntilChanged()
+    // ).subscribe(errorProduct => {
+    //   this.store.dispatch({ type : 'load_product' });
+    //   console.log('%c%s', 'color: #8c0038', 'errorProduct', errorProduct);
+    // });
   }
 
   ngOnInit(){
