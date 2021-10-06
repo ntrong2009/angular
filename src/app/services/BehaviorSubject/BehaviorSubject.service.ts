@@ -6,10 +6,22 @@ import { BehaviorSubject } from 'rxjs';
 })
 
 export class BehaviorSubjectDemo {
-    constructor() {
-        const subject = new BehaviorSubject<number>(0);
+    subject = new BehaviorSubject<number>(0);
 
-        subject.next(Math.random());
-        subject.next(Math.random());
+
+    constructor() { }
+
+    run() {
+
+        this.subject.next(1);
+        this.subject.next(2);
+
+        this.subject.subscribe((data) => {
+            console.log('Subscriber data:', data);
+        });
+
+        this.subject.next(3);
+
+        console.log(this.subject.value);
     }
 }
