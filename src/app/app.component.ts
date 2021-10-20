@@ -8,6 +8,8 @@ import { ShareService } from './services/Operators/Multicasting/share.service';
 import { SwitchMapService } from './services/Operators/Transformation/switchMap.service';
 import { SubjectService } from './services/Subjects/Subject.service';
 import { BehaviorSubjectDemo } from './services/BehaviorSubject/BehaviorSubject.service';
+import { ReplaySubjectDemo } from './services/ReplaySubject/ReplaySubject.service';
+import { AsyncSubjectDemo } from './services/AsyncSubject/AsyncSubject.service';
 
 @Component({
   selector: 'app-root',
@@ -25,8 +27,9 @@ export class AppComponent {
     private subject: SubjectService,
     private startWithService: StartWithService,
     private finalizeService: FinalizeService,
-    private behaviorSubjectDemo: BehaviorSubjectDemo
-
+    private behaviorSubjectDemo: BehaviorSubjectDemo,
+    private relaySubjectDemo: ReplaySubjectDemo,
+    private asyncSubjectDemo: AsyncSubjectDemo
   ) {
     this.CreationRun();
     this.CombinationRun();
@@ -35,7 +38,9 @@ export class AppComponent {
     this.TransformationRun();
 
     // this.finalizeService.emitWhenObserverComplete();
-    this.behaviorSubjectDemo.run();
+    // this.behaviorSubjectDemo.run();
+    // this.relaySubjectDemo.run();
+    this.asyncSubjectDemo.run();
   }
 
   //#region Operator
