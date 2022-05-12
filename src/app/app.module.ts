@@ -6,12 +6,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { EnterAndLeaveComponent } from './components/enter-and-leave/enter-and-leave.component';
 import { AnimateChildComponent } from './components/animate-child/animate-child.component';
+import { AnimationBuilderComponent } from './components/animation-builder/animation-builder.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EnterAndLeaveComponent,
-    AnimateChildComponent
+    AnimateChildComponent,
+    AnimationBuilderComponent
   ],
   imports: [
     BrowserModule,
