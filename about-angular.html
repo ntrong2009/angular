@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About angular</title>
+    <link rel="stylesheet" href="./assets/style.css" />
+</head>
+
+<body>
+    <button type="button" class="collapsible">
+        <h3>Những cách để optimize source front-end của Angular</h3>
+    </button>
+    <div class="content">
+        <h4>Minification of scripts and styles</h4>
+        <span>loại bỏ dấu cách, dòng trống, chú thích, rút gọn tên biến và hàm, kết
+            hợp tệp JS và CSS</span>
+        <ul>
+            <li>JavaScript: Terser, UglifyJS.</li>
+            <li>CSS: CSSNano, CleanCSS.</li>
+            <li>Bundlers: Webpack, Rollup, Parcel.</li>
+        </ul>
+
+        <h4>Tree-shaking</h4>
+        <h4>Dead-code elimination</h4>
+        <h4>Inlining of critical CSS</h4>
+        <h4>Fonts inlining</h4>
+        <ul>
+            <li>Preload fonts: Sử dụng
+                <code><link rel="preload" href="font.woff2" as="font" type="font/woff2" crossorigin="anonymous" /></code>
+            </li>
+            <li>
+                Font-display: Sử dụng font-display: swap để hiển thị font fallback
+                trong khi font chính đang tải.
+            </li>
+            <li>Subsetting fonts: Chỉ tải các glyph cần thiết.</li>
+        </ul>
+
+        <h4>Performance Best Practice</h4>
+        <h4>gzip compression from webserver</h4>
+        <h4>Optimize Images/Video</h4>
+        <ul>
+            <li>
+                <b>Sử dụng định dạng hiện đại :</b> WebP, AVIF thay cho JPEG, PNG.
+            </li>
+            <li><b>Sử dụng công cụ nén :</b> TinyPNG, ImageOptim.</li>
+            <li>
+                <b>Responsive images :</b> Sử dụng <b>srcset</b> để cung cấp các
+                phiên bản hình ảnh phù hợp với kích thước màn hình.
+            </li>
+            <li>
+                Sử dụng thumbnail cho định dạng video
+            </li>
+        </ul>
+
+        <h4>Lazy Loading</h4>
+        <span>Chỉ tải những tài nguyên (hình ảnh, video, iframe) khi
+            chúng sắp hiển thị trên màn hình</span>
+
+        <h4>Caching</h4>
+        <span>Lưu trữ các tài nguyên tĩnh trong bộ nhớ cache của trình
+            duyệt hoặc proxy để sử dụng lại</span>
+        <ul>
+            <li>
+                <b>Browser caching</b> : Sử dụng các header như Cache-Control,
+                Expires.
+            </li>
+            <li>
+                <b>Service Workers:</b> Để cache các tài nguyên trên phía client.
+            </li>
+        </ul>
+
+        <h4>Critical CSS</h4>
+        <span>Trích xuất và tải ngay CSS cần thiết để hiển thị
+            phần trên của trang, trì hoãn tải các phần CSS khác</span>
+        <ul>
+            <li>Cải thiện tốc độ render ban đầu.</li>
+            <li>Tăng điểm số PageSpeed Insights.</li>
+        </ul>
+
+        <h4>Preload và Prefetch</h4>
+        <span>Tải trước các tài nguyên cần thiết hoặc sẽ
+            được sử dụng sau</span>
+        <ul>
+            <li>Giảm thời gian chờ đợi cho các tài nguyên quan trọng.</li>
+            <li>Sử dụng
+                <link rel="preload" /> và
+                <link rel="prefetch" />.
+            </li>
+        </ul>
+
+        <h4>Asynchronous và Defer Loading JavaScript</h4>
+        <span>Sử dụng thuộc tính async
+            hoặc defer để tải các tệp JavaScript không đồng bộ</span>
+        <ul>
+            <li>Giảm thời gian block rendering của trình duyệt.</li>
+            <li>Tăng tốc độ tải trang.</li>
+        </ul>
+
+    </div>
+    <script src="./assets/script.js"></script>
+</body>
+
+</html>
