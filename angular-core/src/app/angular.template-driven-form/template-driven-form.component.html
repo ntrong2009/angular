@@ -1,0 +1,119 @@
+<p>Template-driven form có từ thời AngularJS, là phương pháp tạo form dựa vào template, thực hiện thêm các directive và
+    hành vi vào template, Angular sẽ tự động tạo forms để quản lý và sử dụng</p>
+
+<div>
+    <h2>1. Khởi tạo template</h2>
+    <pre>
+        &lt;form (submit)="onSubmit()"&gt;
+            &lt;table&gt;
+                &lt;thead&gt;
+                    &lt;th&gt;&lt;/th&gt;
+                    &lt;th&gt;&lt;/th&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Name :&lt;/td&gt;
+                        &lt;td&gt;&lt;input type="text"&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Email :&lt;/td&gt;
+                        &lt;td&gt;&lt;input type="email"&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Facebook :&lt;/td&gt;
+                        &lt;td&gt;&lt;input type="url"&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Twitter :&lt;/td&gt;
+                        &lt;td&gt;&lt;input type="url"&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Website :&lt;/td&gt;
+                        &lt;td&gt;&lt;input type="url"&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Tel :&lt;/td&gt;
+                        &lt;td&gt;&lt;input type="tel"&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td colspan="2"&gt;&lt;button type="submit"&gt;Submit&lt;/button&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/form&gt;
+    </pre>
+</div>
+
+<div>
+    <h2>2. Import API cho Template-driven Form</h2>
+    <p>Để có thể sử dụng các APIs mà Angular cung cấp cho việc thao tác với Template-driven Form, cần import NgModule là
+        <b>FormModule</b> từ package
+    </p>
+    <pre>
+        import &lbrace; FormsModule &rbrace; from '&#64;angular/forms';
+
+        &#64;NgModule(&lbrace;
+            declarations: [...],
+            imports: [
+                ...,
+                FormsModule
+            ],
+            providers: [...],
+            bootstrap: [...]
+        &rbrace;)
+        export class AppModule &lbrace; &rbrace;
+    </pre>
+</div>
+
+<div>
+    <h2>3. Thêm ngForm và ngModel directive</h2>
+    <p>Việc cần làm là truy cập vào form instance và gán các control vào form. Lần lượt sử dụng <b>ngFrorm</b> và
+        <b>ngModel</b> directive như sau</p>
+    <pre>
+        &lt;form novalidate #form="ngForm" ...&gt;
+        &lt;/form&gt;
+    </pre>
+</div>
+
+<form action="" (submit)="onSubmit()" #form="ngForm">
+    <table>
+        <thead>
+            <th></th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Name :</td>
+                <td><input type="text" ngModel name="name"></td>
+            </tr>
+            <tr>
+                <td>Email :</td>
+                <td><input type="email" ngModel name="email"></td>
+            </tr>
+            <tr>
+                <td>Facebook :</td>
+                <td><input type="url" ngModel name="facebook"></td>
+            </tr>
+            <tr>
+                <td>Twitter :</td>
+                <td><input type="url" ngModel name="twitter"></td>
+            </tr>
+            <tr>
+                <td>Website :</td>
+                <td><input type="url" ngModel name="website"></td>
+            </tr>
+            <tr>
+                <td>Tel :</td>
+                <td><input type="tel" ngModel name="tel"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Submit</button></td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+<p>Form value : </p>
+<pre>
+    {{ form.value | json }}
+</pre>
