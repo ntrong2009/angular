@@ -1,119 +1,341 @@
-<p>Template-driven form có từ thời AngularJS, là phương pháp tạo form dựa vào template, thực hiện thêm các directive và
-    hành vi vào template, Angular sẽ tự động tạo forms để quản lý và sử dụng</p>
+<p>
+    Template-driven form có từ thời AngularJS, là phương pháp tạo form dựa vào
+    template, thực hiện thêm các directive và hành vi vào template, Angular sẽ tự
+    động tạo forms để quản lý và sử dụng
+</p>
 
 <div>
-    <h2>1. Khởi tạo template</h2>
-    <pre>
-        &lt;form (submit)="onSubmit()"&gt;
-            &lt;table&gt;
+    <button type="button" class="collapsible">
+        <h3>1. Khởi tạo template</h3>
+    </button>
+    <div class="content">
+        <pre>
+            &lt;form (submit)="onSubmit()"&gt;
+                &lt;table&gt;
+                    &lt;thead&gt;
+                        &lt;th&gt;&lt;/th&gt;
+                        &lt;th&gt;&lt;/th&gt;
+                    &lt;/thead&gt;
+                    &lt;tbody&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;Name :&lt;/td&gt;
+                            &lt;td&gt;&lt;input type="text"&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;Email :&lt;/td&gt;
+                            &lt;td&gt;&lt;input type="email"&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;Facebook :&lt;/td&gt;
+                            &lt;td&gt;&lt;input type="url"&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;Twitter :&lt;/td&gt;
+                            &lt;td&gt;&lt;input type="url"&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;Website :&lt;/td&gt;
+                            &lt;td&gt;&lt;input type="url"&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td&gt;Tel :&lt;/td&gt;
+                            &lt;td&gt;&lt;input type="tel"&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                        &lt;tr&gt;
+                            &lt;td colspan="2"&gt;&lt;button type="submit"&gt;Submit&lt;/button&gt;&lt;/td&gt;
+                        &lt;/tr&gt;
+                    &lt;/tbody&gt;
+                &lt;/table&gt;
+            &lt;/form&gt;
+        </pre>
+    </div>
+</div>
+
+<div>
+    <button type="button" class="collapsible">
+        <h3>2. Import API cho Template-driven Form</h3>
+    </button>
+    <div class="content">
+        <p>
+            Để có thể sử dụng các APIs mà Angular cung cấp cho việc thao tác với
+            Template-driven Form, cần import NgModule là <b>FormModule</b> từ package
+        </p>
+        <pre>
+            import &lbrace; FormsModule &rbrace; from '&#64;angular/forms';
+    
+            &#64;NgModule(&lbrace;
+                declarations: [...],
+                imports: [
+                    ...,
+                    FormsModule
+                ],
+                providers: [...],
+                bootstrap: [...]
+            &rbrace;)
+            export class AppModule &lbrace; &rbrace;
+        </pre>
+    </div>
+</div>
+
+<div>
+    <button type="button" class="collapsible">
+        <h3>3. Thêm ngForm và ngModel directive</h3>
+    </button>
+    <div class="content">
+        <p>
+            Việc cần làm là truy cập vào form instance và gán các control vào form. Lần
+            lượt sử dụng <b>ngFrorm</b> và <b>ngModel</b> directive như sau
+        </p>
+        <pre>
+            &lt;form novalidate #form="ngForm" ...&gt;
+            &lt;/form&gt;
+        </pre>
+        <p>
+            Angular cung cấp giải pháp để có thể truy cập được directive/component
+            instance ở trong template của component bằng cách sử dụng <b>exportAs</b>
+        </p>
+        <p>
+            trong đoạn code phía trên, chúng ta đã tạo một template variable là
+            <b>form</b>, nó sẽ là một instance của directive <b>ngForm</b>, như thế ta
+            có thể sử dụng các public APIs mà directive này cung cấp như lấy ra value
+            của nó chẳng hạn <b>form.value</b>
+        </p>
+        <p>Giờ đây ta có thể sử dụng <b>form.value</b> cho việc submit form</p>
+        <pre>
+            &lt;form novalidate #form="ngForm" (submit)="onSubmit(form.value)" ...&gt;
+            &lt;/form&gt;
+            
+            &lt;p&gt;Form value:&lt;/p&gt;
+            &lt;pre&gt;&lbrace;&lbrace; form.value | json &lbrace;&lbrace;&lt;/pre&gt;
+        </pre>
+        <p>
+            Và để dễ dàng trong quá trình develop, có thể hiển thị kết quả ở template đê
+            dễ dàng theo dõi
+        </p>
+        <p>
+            Tại thời điểm này, cho dù đang có form control ở template nhưng Angular
+            không thể biết cái nào cần quản lý nên chỉ nhận được một object rỗng
+        </p>
+        <p>
+            Bây giờ cần nói cho Angular biết các form control nào cần quản lý. Đây là
+            lúc dùng tới <b>ngModel</b> directive
+        </p>
+        <p>Gắn <b>ngModel</b> vào các control như sau</p>
+        <pre>
+            &lt;input type="text" ngModel ...&gt;
+        </pre>
+        <p>
+            Nhưng nếu bạn không khai báo attribute name cho form control, bạn sẽ gặp
+            phải một lỗi giống như sau:
+        </p>
+        <i style="color: red">Error: If ngModel is used within a form tag, either the name attribute must
+            be set or the form control must be defined as ‘standalone’ in
+            ngModelOptions.</i>
+        <p>Kèm với đó là bạn sẽ có các ví dụ để sửa lỗi trên.</p>
+        <p>OK, chúng ta cần thêm một số config để Angular biết cách tạo ra form control của nó để quản lý. Và chúng ta
+            sẽ
+            thêm attribute <b>name</b> cho các form control ở template trên.</p>
+        <pre>
+            &lt;input type="text" ngModel name="contact-name" ...&gt;
+        </pre>
+        <p>Bây giờ quan sát form value chúng ta sẽ có một object có key <b>contact-name</b> chẳng hạn:</p>
+        <pre>
+            &lbrace;
+                "contact-name": ""
+            &rbrace;
+        </pre>
+        <p>Nếu bạn quen với camel case, chúng ta có thể sửa đổi chút để object của chúng ta có key nhìn quen thuộc hơn
+            chẳng
+            hạn.</p>
+        <pre>
+            &lt;input type="text" ngModel name="contactName" ...&gt;
+        </pre>
+        <p>Kết quả nhận được:</p>
+        <pre>
+            &lbrace;
+                "contactName": ""
+            &rbrace;
+        </pre>
+        <p>OK cool, giờ chúng ta có thể cài đặt tương tự cho các phần tử khác của form.</p>
+        <p>Bây giờ có một tình huống phát sinh là bạn cần bind data cho các control với một dữ liệu có sẵn, lúc này
+            chúng ta
+            sẽ dùng đến binding cho property, và property chúng ta nhắc đến ở đây chính là <b>ngModel</b>.</p>
+        <p>Công thức như sau</p>
+        <pre>
+            [ngModel]="obj.prop"
+        </pre>
+        <p>Giả sử object trong component có dạng:</p>
+        <pre>
+            contact = &lbrace;
+                "contactName": "Tiep Phan",
+                "email": "abcdeg.com",
+                "facebook": "facebook.com",
+                "twitter": "twitter.com",
+                "website": "tiepphan.com",
+                "tel": "1234-5678-90"
+            &rbrace;
+        </pre>
+        <p>Template của chúng ta sẽ thay đổi như sau:</p>
+        <pre>
+            &lt;input [ngModel]="contact.contactName" name="contactName" type="text" ...&gt;
+        </pre>
+        <p>Mọi thứ đều bắt nguồn từ những điều cơ bản nhất, <b>[ngModel]</b> chính là one-way binding mà chúng ta vẫn
+            thường dùng</p>
+        <p>Lưu ý rằng, khi bạn update form control, bản thân control được form quản lý sẽ thay đổi - <b>form.value</b>,
+            nhưng object contact ở trên sẽ không hề hấn gì, vì chúng ta không hề đụng chạm gì tới nó, chúng ta chỉ
+            binding một chiều, mà không binding ngược trở lại. Điều này dẫn đến chúng ta có thêm một dạng khác của
+            <b>ngModel</b> đó là cú pháp two-way binding <b>[(ngModel)]</b>.
+        </p>
+        <pre>
+            &lt;input [(ngModel)]="contact.contactName" name="contactName" type="text" ...&gt;
+        </pre>
+    </div>
+</div>
+
+<div>
+    <button type="button" class="collapsible">
+        <h3>4. ngModelGroup directive</h3>
+    </button>
+    <div class="content">
+        <p>Đến lúc này, chúng ta vẫn đang chỉ quản lý form control với một object chứa tất cả các keys cần thiết, vậy
+            làm thế nào chúng ta có thể gom nhóm một số key lại thành một group riêng, câu trả lời là
+            <b>ngModelGroup</b> Directive này tạo ra một group lồng vào group cha, giống như object nằm trong một object
+            khác.
+        </p>
+        <pre>
+            &lt;table ngModelGroup="social"&gt;
                 &lt;thead&gt;
                     &lt;th&gt;&lt;/th&gt;
                     &lt;th&gt;&lt;/th&gt;
                 &lt;/thead&gt;
                 &lt;tbody&gt;
                     &lt;tr&gt;
-                        &lt;td&gt;Name :&lt;/td&gt;
-                        &lt;td&gt;&lt;input type="text"&gt;&lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Email :&lt;/td&gt;
-                        &lt;td&gt;&lt;input type="email"&gt;&lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
                         &lt;td&gt;Facebook :&lt;/td&gt;
-                        &lt;td&gt;&lt;input type="url"&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;input type="url" ngModel name="facebook"&gt;&lt;/td&gt;
                     &lt;/tr&gt;
                     &lt;tr&gt;
                         &lt;td&gt;Twitter :&lt;/td&gt;
-                        &lt;td&gt;&lt;input type="url"&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;input type="url" ngModel name="twitter"&gt;&lt;/td&gt;
                     &lt;/tr&gt;
                     &lt;tr&gt;
                         &lt;td&gt;Website :&lt;/td&gt;
-                        &lt;td&gt;&lt;input type="url"&gt;&lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td&gt;Tel :&lt;/td&gt;
-                        &lt;td&gt;&lt;input type="tel"&gt;&lt;/td&gt;
-                    &lt;/tr&gt;
-                    &lt;tr&gt;
-                        &lt;td colspan="2"&gt;&lt;button type="submit"&gt;Submit&lt;/button&gt;&lt;/td&gt;
+                        &lt;td&gt;&lt;input type="url" ngModel name="website"&gt;&lt;/td&gt;
                     &lt;/tr&gt;
                 &lt;/tbody&gt;
             &lt;/table&gt;
-        &lt;/form&gt;
-    </pre>
+        </pre>
+        <p>Kết quả thu được chúng ta có form value với cấu trúc:</p>
+        <pre>
+            &#123;
+                "contactName": "",
+                "email": "",
+                "social": &#123;
+                    "facebook": "",
+                    "twitter": "",
+                    "website": ""
+                &#125;,
+                "tel": ""
+            &#125;
+        </pre>
+    </div>
 </div>
 
 <div>
-    <h2>2. Import API cho Template-driven Form</h2>
-    <p>Để có thể sử dụng các APIs mà Angular cung cấp cho việc thao tác với Template-driven Form, cần import NgModule là
-        <b>FormModule</b> từ package
-    </p>
-    <pre>
-        import &lbrace; FormsModule &rbrace; from '&#64;angular/forms';
+    <button type="button" class="collapsible">
+        <h3>5. Submit form</h3>
+    </button>
+    <div class="content">
+        <p>
+            Ở phần trước, chúng ta đã listen event <b>submit</b> của form, nhưng ngoài ra, còn một event khác cũng được
+            fired ra
+            khi thực hiện <b>submit</b> form, đó là <b>ngSubmit</b>. Vậy có điều gì khác biệt giữa <b>submit</b> và
+            <b>ngSubmit</b>?
+        </p>
 
-        &#64;NgModule(&lbrace;
-            declarations: [...],
-            imports: [
-                ...,
-                FormsModule
-            ],
-            providers: [...],
-            bootstrap: [...]
-        &rbrace;)
-        export class AppModule &lbrace; &rbrace;
-    </pre>
+        <p>Giống như <b>submit</b>, event <b>ngSubmit</b> cũng thực hiện hành động khi form thực hiện submit - người
+            dùng nhấn vào
+            button submit chẳng hạn. Nhưng <b>ngSubmit</b> sẽ thêm một số nhiệm vụ để đảm bảo form của bạn không thực
+            hiện
+            submit form theo cách thông thường - tải lại trang sau khi submit.</p>
+
+        <p>
+            Giả sử, chúng ta thực hiện một tác vụ nào đó trong hàm listen form submit mà sinh ra exception, lúc này nếu
+            bạn sử dụng <b>submit</b>, trang web của bạn sẽ reload, còn nếu bạn sử dụng <b>ngSubmit</b>, nó sẽ không reload - phiên
+            bản lúc này tôi đang sử dụng.
+        </p>
+
+        <pre>
+            onSubmit(formValue) &#123;
+                // Do something awesome
+                console.log(formValue);
+                throw Error('something go wrong');
+            &#125;
+        </pre>
+        <p>Lời khuyên dành cho bạn là nên dùng <b>ngSubmit</b> cho việc listen form submit.</p>
+    </div>
 </div>
 
 <div>
-    <h2>3. Thêm ngForm và ngModel directive</h2>
-    <p>Việc cần làm là truy cập vào form instance và gán các control vào form. Lần lượt sử dụng <b>ngFrorm</b> và
-        <b>ngModel</b> directive như sau</p>
-    <pre>
-        &lt;form novalidate #form="ngForm" ...&gt;
-        &lt;/form&gt;
-    </pre>
+    <button type="button" class="collapsible">
+        <h3>6. Template-driven error validation</h3>
+    </button>
+    <div class="content">
+        
+    </div>
 </div>
 
-<form action="" (submit)="onSubmit()" #form="ngForm">
-    <table>
-        <thead>
-            <th></th>
-            <th></th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Name :</td>
-                <td><input type="text" ngModel name="name"></td>
-            </tr>
-            <tr>
-                <td>Email :</td>
-                <td><input type="email" ngModel name="email"></td>
-            </tr>
-            <tr>
-                <td>Facebook :</td>
-                <td><input type="url" ngModel name="facebook"></td>
-            </tr>
-            <tr>
-                <td>Twitter :</td>
-                <td><input type="url" ngModel name="twitter"></td>
-            </tr>
-            <tr>
-                <td>Website :</td>
-                <td><input type="url" ngModel name="website"></td>
-            </tr>
-            <tr>
-                <td>Tel :</td>
-                <td><input type="tel" ngModel name="tel"></td>
-            </tr>
-            <tr>
-                <td colspan="2"><button type="submit">Submit</button></td>
-            </tr>
-        </tbody>
-    </table>
-</form>
+<div class="result">
+    <h2>Kết quả</h2>
+    <form action="" (submit)="onSubmit()" #form="ngForm">
+        <table>
+            <thead>
+                <th></th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Name :</td>
+                    <td><input type="text" ngModel name="name" /></td>
+                </tr>
+                <tr>
+                    <td>Email :</td>
+                    <td><input type="email" ngModel name="email" /></td>
+                </tr>
+                <tr>
+                    <table ngModelGroup="social">
+                        <thead>
+                            <th></th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Facebook :</td>
+                                <td><input type="url" ngModel name="facebook"></td>
+                            </tr>
+                            <tr>
+                                <td>Twitter :</td>
+                                <td><input type="url" ngModel name="twitter"></td>
+                            </tr>
+                            <tr>
+                                <td>Website :</td>
+                                <td><input type="url" ngModel name="website"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </tr>
+                <tr>
+                    <td>Tel :</td>
+                    <td><input type="tel" ngModel name="tel" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="submit">Submit</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
 
-<p>Form value : </p>
-<pre>
-    {{ form.value | json }}
-</pre>
+    <p>Form value :</p>
+    <pre>
+        {{ form.value | json }}
+    </pre>
+</div>

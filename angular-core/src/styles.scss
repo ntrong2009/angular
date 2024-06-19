@@ -6,18 +6,37 @@
     url("./assets/fonts/source-serif-pro/SourceSerifPro-Regular.otf") format("opentype");
 }
 
+@font-face {
+  font-family: "source-serif-pro";
+  font-weight: 400;
+  src: local(""), url("./assets/fonts/source-serif-pro/SourceSerifPro-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "source-serif-pro";
+  font-weight: 500;
+  src: local(""), url("./assets/fonts/source-serif-pro/SourceSerifPro-Bold.otf") format("opentype");
+}
+
 body {
   margin: 0 10%;
   font-family: "source-serif-pro";
+  p {
+    font-weight: 400;
+  }
+
+  b {
+    font-weight: 500
+  };
 }
 
 pre {
-  background-color:#222;
+  background-color:#4a4a4a;
   padding:9px;
   color:white;
   border-radius:5px;
   font-size:15px;
-  border-left:8px solid green;
+  border-left:8px solid rgb(0, 0, 0);
 }
 
 .collapsible {
