@@ -15,7 +15,7 @@
       "!{projectRoot}/**/*.cy.[jt]s?(x)",
       "!{projectRoot}/cypress.config.[jt]s"
     ],
-    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
+    "sharedGlobals": []
   },
   "targetDefaults": {
     "@angular-devkit/build-angular:browser": {
@@ -71,5 +71,5 @@
       "unitTestRunner": "jest"
     }
   },
-  "nxCloudAccessToken": "ZGQ2YWQ3ZjgtODRiNS00NmZjLTg2OTQtYTE3NDg5OTFlODFifHJlYWQtd3JpdGU="
+  "nxCloudAccessToken": "MTI2MjFlNDUtNjdmNS00ZTE4LThlMzUtY2VmMWMxZWEyM2U5fHJlYWQtd3JpdGU="
 }

@@ -1,28 +1,28 @@
 {
-  "name": "host-app",
+  "name": "hosted-app",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "apps/host-app/src",
+  "sourceRoot": "apps/hosted-app/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/host-app",
-        "index": "apps/host-app/src/index.html",
-        "main": "apps/host-app/src/main.ts",
+        "outputPath": "dist/apps/hosted-app",
+        "index": "apps/hosted-app/src/index.html",
+        "main": "apps/hosted-app/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/host-app/tsconfig.app.json",
+        "tsConfig": "apps/hosted-app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/host-app/public"
+            "input": "apps/hosted-app/public"
           }
         ],
-        "styles": ["apps/host-app/src/styles.scss"],
+        "styles": ["apps/hosted-app/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -56,10 +56,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "host-app:build:production"
+          "buildTarget": "hosted-app:build:production"
         },
         "development": {
-          "buildTarget": "host-app:build:development"
+          "buildTarget": "hosted-app:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -67,7 +67,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "host-app:build"
+        "buildTarget": "hosted-app:build"
       }
     },
     "lint": {
@@ -77,13 +77,13 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/host-app/jest.config.ts"
+        "jestConfig": "apps/hosted-app/jest.config.ts"
       }
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "host-app:build",
+        "buildTarget": "hosted-app:build",
         "port": 4200,
         "spa": true
       }
