@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>polyfills file</title>
+    <link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>
+                <b>Tương thích với các trình duyệt cũ</b>
+                <p>
+                    Một số tính năng JavaScript hiện đại và các API của trình duyệt
+                    không được hỗ trợ đầy đủ trên các phiên bản trình duyệt cũ hơn. Polyfills cung cấp các triển khai
+                    thay
+                    thế để đảm bảo ứng dụng Angular của bạn có thể chạy trên nhiều trình duyệt.
+                </p>
+            </li>
+            <li>
+                <b>Quản lý các polyfills một cách tập trung</b>
+                <p>
+                    File polyfills.ts tập trung tất cả các polyfills cần thiết ở một nơi, giúp dễ dàng quản lý và bảo
+                    trì.
+                </p>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h2 style="color: red;">It looks like your application or one of its dependencies is using i18n. Angular 9
+            introduced a global $localize() function that needs to be loaded.</h2>
+        <p>
+            lỗi xảy ra khi bạn sử dụng các tính năng i18n (quốc tế hóa) trong Angular 9 trở lên nhưng chưa thêm gói
+            @angular/localize vào ứng dụng của mình.
+        </p>
+        <p>
+            Sau khi cài đặt gói @angular/localize, bạn cần import và chạy hàm $localize trong file polyfills.ts. Điều
+            này đảm bảo rằng hàm này được định nghĩa toàn cục và sẵn sàng sử dụng trong ứng dụng của bạn.
+        </p>
+        <pre>
+            import '@angular/localize/init';
+        </pre>
+    </div>
+</body>
+
+</html>

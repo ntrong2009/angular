@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular DI</title>
+    <link rel="stylesheet" href="../../../../assets/style.css">
+</head>
+
+<body>
+    <pre>
+        @Injectable({
+            providedIn: 'root',
+        })
+        export class AuthService {
+            // ...
+        }
+    </pre>
+    <p>
+        Khi đăng ký <b>Injectable</b> cho một service với <b>providedIn: 'root'</b>, service đó được khởi tạo DI ở dạng
+        <b>singleton</b>
+        pattern trong Angular.
+    </p>
+    <p>
+        <b>Singleton</b> pattern đảm bảo rằng chỉ có một instance duy nhất của service được tạo ra trong suốt vòng đời của ứng
+        dụng Angular. Điều này có nghĩa là bất cứ khi nào một component hoặc module yêu cầu service được inject, nó sẽ
+        luôn nhận được cùng một instance.
+    </p>
+</body>
+
+</html>

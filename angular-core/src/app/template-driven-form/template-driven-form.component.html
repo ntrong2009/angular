@@ -1,0 +1,55 @@
+<div class="result">
+    <h2>Kết quả</h2>
+    <form action="" (submit)="onSubmit()" #form="ngForm">
+        <table>
+            <thead>
+                <th></th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Name :</td>
+                    <td><input type="text" ngModel name="name" /></td>
+                </tr>
+                <tr>
+                    <td>Email :</td>
+                    <td><input type="email" ngModel name="email" /></td>
+                </tr>
+                <tr>
+                    <table ngModelGroup="social">
+                        <thead>
+                            <th></th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Facebook :</td>
+                                <td><input type="url" ngModel name="facebook"></td>
+                            </tr>
+                            <tr>
+                                <td>Twitter :</td>
+                                <td><input type="url" ngModel name="twitter"></td>
+                            </tr>
+                            <tr>
+                                <td>Website :</td>
+                                <td><input type="url" ngModel name="website"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </tr>
+                <tr>
+                    <td>Tel :</td>
+                    <td><input type="tel" ngModel name="tel" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="submit">Submit</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <p>Form value :</p>
+    <pre>
+        {{ form.value | json }}
+    </pre>
+</div>
